@@ -21,13 +21,22 @@ var TaskSchema = new Schema({
   deadline: {
     type: String,    
   },
-  completed: {
-    type: Boolean,
-    default: false
-  },
-  timeAllocated: {
-    type: Number,
-    default: 1
+  status: {
+    started: {
+      type: Boolean,
+      default: false
+    },
+    completed: {
+      type: Boolean,
+      defualt: false
+    },
+    timeAllocated: {
+      type: String
+    },
+    timeSpent: {
+      type: String,
+      default: 0
+    }   
   },
   important: {
     type: Boolean,
@@ -41,9 +50,10 @@ var TaskSchema = new Schema({
     type: Schema.ObjectId,
     ref: 'Task'
   }],
-  timeSpent: {
-    type: Number,
-    default: 0
+  createdBy: {
+    type: Schema.ObjectId,
+    ref: 'User',
+    required: true
   }
 });
 

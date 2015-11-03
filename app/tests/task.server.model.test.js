@@ -37,11 +37,15 @@ describe('Task Model Unit Tests:', function() {
 				title: faker.lorem.words(2),
 				description: faker.lorem.sentence(2),
 				deadline: closeDeadline,
-				completed: false,
-				timeAllocated: 1,
+				status: {
+					started: true,
+					completed: false,
+					timeAllocated: moment().minute(30),
+					timeSpent: moment().minute(25),
+				},		
 				important: true,
-				urgent: false,
-				timeSpent: 0
+				urgent: false,				
+				createdBy: user._id
 			});
 
 			done();
