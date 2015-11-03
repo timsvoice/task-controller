@@ -4,7 +4,7 @@ module.exports = {
 	db: 'mongodb://localhost/ikebox-test',
 	port: 3001,
 	app: {
-		title: 'ikebox - Test Environment'
+		title: 'Ikebox - Test Environment'
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || 'APP_ID',
