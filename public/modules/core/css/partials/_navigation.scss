@@ -1,0 +1,42 @@
+.header-menu {
+  @extend %menu-bar;
+  @extend .menu-group;
+  background-color: transparent;
+  color: $color-base;
+  @extend .primary;   
+  // height: 4rem;
+  > .menu-group-right {
+    .menu-bar {
+      background-color: transparent;
+      overflow: visible;
+      .menu.text {
+        @extend .secondary;
+        background-color: none;
+        border: none;
+        margin-top: 1rem;
+        padding: 0.5rem 0.75rem 0.75rem 0.75rem;        
+      }
+      a:hover {
+        background: transparent;
+      }
+    }
+  }
+  > .menu-group-left {
+    .menu-bar {
+      background-color: transparent;    
+      a:hover {
+        background: transparent;
+      }
+    }
+  }
+}
+
+.org {
+  &-profile-menu {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    .activeMenuItem {
+      text-decoration: underline;      
+    }
+  }
+}

@@ -7,6 +7,7 @@ module.exports = function(grunt) {
 		serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js'],
 		clientViews: ['public/modules/**/views/**/*.html'],
 		clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
+		clientSass: ['public/modules/**/*.scss', 'public/lib/foundation-apps/scss/_settings.scss'],
 		clientCSS: ['public/modules/**/*.css'],
 		mochaTests: ['app/tests/**/*.js']
 	};
@@ -47,8 +48,25 @@ module.exports = function(grunt) {
 				options: {
 					livereload: true
 				}
+			},
+			clientSass: {
+				files: watchFiles.clientSass,
+				tasks: ['sass'],
+				options: {
+					livereload: true
+				}
 			}
 		},
+		sass: {
+      options: {
+        sourceMap: true
+      },
+      dist: {
+        files: {
+            'public/modules/core/css/app.css': 'public/modules/core/css/app.css.scss'
+        }
+      }
+    },
 		jshint: {
 			all: {
 				src: watchFiles.clientJS.concat(watchFiles.serverJS),
@@ -158,7 +176,7 @@ module.exports = function(grunt) {
 	});
 
 	// Default task(s).
-	grunt.registerTask('default', ['lint', 'concurrent:default']);
+	grunt.registerTask('default', ['lint', 'sass', 'concurrent:default']);
 
 	// Debug task.
 	grunt.registerTask('debug', ['lint', 'concurrent:debug']);
@@ -174,4 +192,7 @@ module.exports = function(grunt) {
 
 	// Test task.
 	grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
+	grunt.registerTask('serverTest', ['env:test', 'mochaTest']);
+	grunt.registerTask('clientTest', ['env:test', 'karma:unit']);
+
 };

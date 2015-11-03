@@ -10,7 +10,8 @@ var ApplicationConfiguration = (function() {
 		'ngTouch',
 		'ngSanitize',
 		'ui.router',
-		'ui.utils'
+		'ui.utils',
+		'foundation'
 	];
 
 	// Add a new vertical module

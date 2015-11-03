@@ -13,8 +13,7 @@ module.exports = {
 	assets: {
 		lib: {
 			css: [
-				'public/lib/bootstrap/dist/css/bootstrap.css',
-				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
+				'public/lib/foundation-apps/dist/css/foundation-apps.css',
 			],
 			js: [
 				'public/lib/angular/angular.js',
@@ -25,9 +24,13 @@ module.exports = {
 				'public/lib/angular-sanitize/angular-sanitize.js', 
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
-				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js'
+				'public/lib/foundation-apps/dist/js/foundation-apps.js',
+				'public/lib/foundation-apps/dist/js/foundation-apps-templates.js'
 			]
 		},
+		html: [
+			'public/lib/foundation-apps/dist/js/angular/components/*.html'
+		],
 		css: [
 			'public/modules/**/css/*.css'
 		],
