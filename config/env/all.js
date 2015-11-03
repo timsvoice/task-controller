@@ -42,7 +42,8 @@ module.exports = {
 		],
 		tests: [
 			'public/lib/angular-mocks/angular-mocks.js',
-			'public/modules/*/tests/*.js'
+			'public/modules/*/tests/*.js',
+			'public/dist/application.min.css'
 		]
 	}
 };
