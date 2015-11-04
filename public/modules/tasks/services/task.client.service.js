@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('tasks').factory('Task', ['$resource', '$rootScope', 'Broadcast',
-	function($resource, $rootScope, Broadcast) {
+angular.module('tasks').factory('Task', ['$resource','Broadcast',
+	function($resource,Broadcast) {
 		var error,
 				response,
 				message,
@@ -70,7 +70,7 @@ angular.module('tasks').factory('Task', ['$resource', '$rootScope', 'Broadcast',
 					return callback(err);
 				})
 			},
-			findAllTasks: function findAllTasks (taskObj, callback) {
+			findAllTasks: function findAllTasks (callback) {
 				TaskResource.query(function (res) {
 					return callback(res);
 				}, function (err) {

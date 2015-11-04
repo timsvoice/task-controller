@@ -11,7 +11,8 @@ var ApplicationConfiguration = (function() {
 		'ngSanitize',
 		'ui.router',
 		'ui.utils',
-		'foundation'
+		'foundation',
+		'formly'
 	];
 
 	// Add a new vertical module

@@ -2,7 +2,8 @@
 
 angular.module('core').factory('Broadcast', ['$rootScope',
 	function($rootScope) {
-		var broadcastService;
+		
+    var broadcastService;
 
 		broadcastService = function broadcast (transmission) {
       var response = {
@@ -12,7 +13,6 @@ angular.module('core').factory('Broadcast', ['$rootScope',
       $rootScope.$broadcast(transmission.event, {message: response.message});
       return response;
     }      
-
     return broadcastService;
 	}
 ]);
