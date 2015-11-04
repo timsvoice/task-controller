@@ -4,16 +4,15 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
+    errorHandler = require('./errors.server.controller'),    
     _ = require('lodash'),
     Task = mongoose.model('Task');
 
 /**
  * Create a Task
  */
-exports.createTask = function(req, res) {
-  
-  var task = new Task(req.body.task);
-
+exports.createTask = function(req, res) {  
+  var task = new Task(req.body);
   task.save(function(err) {
     if (err) {
       return res.status(400).send({
@@ -52,7 +51,7 @@ exports.updateTask = function(req, res) {
 };
 
 /**
- * Delete an Task
+ * Delete a Task
  */
 exports.deleteTask = function(req, res) {
   var task = req.task ;
@@ -73,7 +72,7 @@ exports.deleteTask = function(req, res) {
  */
 exports.findAllTasks = function(req, res) {
   Task.find({
-    createdBy: req.body.user._id
+    createdBy: req.user._id
   }).sort('-created').populate('subTasks').exec(function(err, tasks) {
     if (err) {
       return res.status(400).send({

@@ -84,7 +84,7 @@
       };
 
       taskResponse = {
-        title: 'Task Title',
+        title: 'New Title',
         description: 'Task description',
         deadline: new Date(2015, 11, 15),
         status: {
@@ -103,9 +103,23 @@
     it('Should add a new task to the database', function() {
       $httpBackend.whenPOST('tasks').respond(200, taskResponse);
       Task.createTask(task, user._id, function (res) {
-        expect(res.createdBy).toBe(user._id);
+        expect(res.object.createdBy).toBe(user._id);
       });
       $httpBackend.flush();       
     });
+    it('Should update a task', function() {
+      $httpBackend.whenPUT('tasks').respond(200, taskResponse);
+      Task.updateTask(task, function (res) {
+        expect(res.object.title).toBe('New Title');
+      });
+      $httpBackend.flush();       
+    }); 
+    it('Should delete a task', function() {
+      $httpBackend.whenDELETE('tasks').respond(200);
+      Task.deleteTask(task, function (res) {
+        expect(res.message).toBe('Task Deleted');
+      });
+      $httpBackend.flush();       
+    });    
   });
 }());

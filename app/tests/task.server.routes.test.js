@@ -53,7 +53,6 @@ describe('Task Route Tests:', function() {
 				urgent: false,				
 				createdBy: user._id
 			});
-
 			done();
 		});
 	});
@@ -67,11 +66,9 @@ describe('Task Route Tests:', function() {
 					if (signinErr) done(signinErr);		
 			    agent.post('/tasks')
 			      .expect(200)
-			      .send({task: task})
+			      .send(task)
 			      .end(function(taskErr, taskRes) {
-			        
-			        if (taskErr) console.log(taskErr)
-			        
+
 			        taskRes.body.should.be.an.Object.with.property('title', task.title);
 
 			        done();
@@ -92,7 +89,6 @@ describe('Task Route Tests:', function() {
 					if (signinErr) done(signinErr);
 			    agent.get('/tasks')
 			      .expect(200)
-			      .send({user: user})
 			      .end(function(taskErr, taskRes) {
 			        
 			        if (taskErr) console.log(taskErr)
@@ -111,7 +107,6 @@ describe('Task Route Tests:', function() {
 					if (signinErr) done(signinErr);
 			    agent.get('/tasks/' + task._id)
 			      .expect(200)
-			      .send({user: user})
 			      .end(function(taskErr, taskRes) {
 			        
 			        if (taskErr) console.log(taskErr)
