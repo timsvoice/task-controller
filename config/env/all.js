@@ -16,6 +16,7 @@ module.exports = {
 				'public/lib/foundation-apps/dist/css/foundation-apps.css',
 			],
 			js: [
+				'public/lib/api-check/dist/api-check.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js', 
 				'public/lib/angular-cookies/angular-cookies.js', 
@@ -23,8 +24,7 @@ module.exports = {
 				'public/lib/angular-touch/angular-touch.js', 
 				'public/lib/angular-sanitize/angular-sanitize.js', 
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
-				'public/lib/angular-ui-utils/ui-utils.js',
-				'public/lib/api-check/dist/api-check.js',
+				'public/lib/angular-ui-utils/ui-utils.js',				
 				'public/lib/angular-formly/dist/formly.js',
 				'public/lib/foundation-apps/dist/js/foundation-apps.js',
 				'public/lib/foundation-apps/dist/js/foundation-apps-templates.js'

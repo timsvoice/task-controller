@@ -1,10 +1,10 @@
 'use strict';
 
 (function() {
-	// Decision matrix Controller Spec
-	describe('Decision matrix Controller Tests', function() {
+	// Ikebox list Controller Spec
+	describe('Ikebox list Controller Tests', function() {
 		// Initialize global variables
-		var DecisionMatrixController,
+		var IkeboxListController,
 			scope,
 			$httpBackend,
 			$stateParams,
@@ -44,8 +44,8 @@
 			$httpBackend = _$httpBackend_;
 			$location = _$location_;
 
-			// Initialize the Decision matrix controller.
-			DecisionMatrixController = $controller('DecisionMatrixController', {
+			// Initialize the Ikebox list controller.
+			IkeboxListController = $controller('IkeboxListController', {
 				$scope: scope
 			});
 		}));

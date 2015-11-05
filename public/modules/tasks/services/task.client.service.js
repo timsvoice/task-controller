@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('tasks').factory('Task', ['$resource','Broadcast',
-	function($resource,Broadcast) {
+	function($resource, Broadcast) {
 		var error,
 				response,
 				message,
@@ -24,7 +24,7 @@ angular.module('tasks').factory('Task', ['$resource','Broadcast',
 						message: 'Task Created!',
 						object: task,
 						event: 'task.update'
-					}
+					};					
 					Broadcast(message);
 					return callback(message);
 				}, function (err) {
@@ -49,7 +49,7 @@ angular.module('tasks').factory('Task', ['$resource','Broadcast',
 			deleteTask: function deleteTask (taskObj, callback) {
 				TaskResource.delete({
 					taskId: taskObj._id
-				}, function (task) {
+				}, taskObj, function (task) {
 					message = {
 						message: 'Task Deleted',
 						object: task,
@@ -58,24 +58,25 @@ angular.module('tasks').factory('Task', ['$resource','Broadcast',
 					Broadcast(message);
 					return callback(message);
 				}, function (err) {
+					console.log(err);
 					return callback(err);
-				})
+				});
 			},
 			findTask: function findTask (taskObj, callback) {
 				TaskResource.get({
 					taskId: taskObj._id
 				}, function (res) {
 					return callback(res);
-				}, function (res) {
+				}, function (err) {
 					return callback(err);
-				})
+				});
 			},
 			findAllTasks: function findAllTasks (callback) {
 				TaskResource.query(function (res) {
 					return callback(res);
 				}, function (err) {
 					return callback(err);
-				})
+				});
 			}
 		};
 

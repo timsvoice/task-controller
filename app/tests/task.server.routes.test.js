@@ -36,7 +36,7 @@ describe('Task Route Tests:', function() {
 		credentials = {
 			email: user.email,
 			password: user.password
-		}
+		};
 
 		user.save(function() { 
 			task = new Task({
@@ -73,14 +73,14 @@ describe('Task Route Tests:', function() {
 
 			        done();
 			      });
-		     })
+		     });
 		});
 	});
 
 	describe('Method Get', function() {
 		beforeEach(function (done) {			
-			task.save(done)
-		})
+			task.save(done);
+		});
 		it('should be able to get a list of tasks without problems', function(done) {
 			agent.post('/auth/signin')
 				.send(credentials)
@@ -91,13 +91,13 @@ describe('Task Route Tests:', function() {
 			      .expect(200)
 			      .end(function(taskErr, taskRes) {
 			        
-			        if (taskErr) console.log(taskErr)
+			        if (taskErr) console.log(taskErr);
 			        
 			        taskRes.body.should.be.an.Array.with.length(1);
 
 			        done();
 			      });
-				})
+				});
 		});
 		it('should be able to get a single task without problems', function(done) {
 	    agent.post('/auth/signin')
@@ -109,20 +109,20 @@ describe('Task Route Tests:', function() {
 			      .expect(200)
 			      .end(function(taskErr, taskRes) {
 			        
-			        if (taskErr) console.log(taskErr)
+			        if (taskErr) console.log(taskErr);
 			        
 			        taskRes.body.should.be.an.Object.with.property('title', task.title);
 
 			        done();
 			      });
-			  })
+			  });
 		});		
 	});
 
 	describe('Method Put', function() {
 		beforeEach(function (done) {			
 			task.save(done);
-		})
+		});
 		it('should be able to update task without problems', function(done) {
 	    task.title = 'New Title';
 	    agent.post('/auth/signin')
@@ -141,7 +141,7 @@ describe('Task Route Tests:', function() {
 
 			        done();
 			      });
-			  })
+			  });
 		});
 	});
 

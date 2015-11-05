@@ -2,7 +2,7 @@
 
 (function() {
   // Followers Service Spec
-  describe('Followers Service Tests', function() {
+  describe('Tasks Service Tests', function() {
     // Initialize global variables
     var Task,
         Users,
@@ -101,21 +101,21 @@
     });
 
     it('Should add a new task to the database', function() {
-      $httpBackend.whenPOST('tasks').respond(200, taskResponse);
+      $httpBackend.whenPOST('/tasks').respond(200, taskResponse);
       Task.createTask(task, user._id, function (res) {
         expect(res.object.createdBy).toBe(user._id);
       });
       $httpBackend.flush();       
     });
     it('Should update a task', function() {
-      $httpBackend.whenPUT('tasks').respond(200, taskResponse);
+      $httpBackend.whenPUT('/tasks').respond(200, taskResponse);
       Task.updateTask(task, function (res) {
         expect(res.object.title).toBe('New Title');
       });
       $httpBackend.flush();       
     }); 
     it('Should delete a task', function() {
-      $httpBackend.whenDELETE('tasks').respond(200);
+      $httpBackend.whenDELETE('/tasks').respond(200);
       Task.deleteTask(task, function (res) {
         expect(res.message).toBe('Task Deleted');
       });

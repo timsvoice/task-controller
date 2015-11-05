@@ -1,0 +1,20 @@
+<section class="ikebox-list-container">
+  <div class="ikebox-list card">
+    <div  class="card-section"
+          zf-open="create-task-modal">
+      <h2>+</h2>
+      <p>add new ikebox</p>
+    </div>
+  </div>
+
+  <div class="ikebox-list card"
+        ng-repeat="ikebox in dbVm.tasks | ikebox:true">
+    <div class="card-section">
+    <h3>{{ikebox.title}}</h3>
+    <p>{{ikebox.description}}</p>
+    {{ikebox._id}}
+    <a ng-click="dbVm.deleteTask(ikebox, $index)">delete</a>
+    </div>
+  </div>
+
+</section>

@@ -62,16 +62,16 @@ describe('Task Model Unit Tests:', function() {
 		it('should not save without a title', function(done) {
 			task.title = '';
 			return task.save(function(err){
-				should.exist(err)
+				should.exist(err);
 				done();
-			})
+			});
 		});
 		it('should not save without a description', function(done) {
 			task.description = '';
 			return task.save(function(err){
-				should.exist(err)
+				should.exist(err);
 				done();
-			})
+			});
 		});
 	});
 

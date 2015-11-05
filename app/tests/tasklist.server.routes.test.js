@@ -37,7 +37,7 @@ describe('Tasklist Route Tests:', function() {
 		credentials = {
 			email: user.email,
 			password: user.password
-		}
+		};
 
 		task = new Task({
 			title: faker.lorem.words(2),
@@ -58,7 +58,7 @@ describe('Tasklist Route Tests:', function() {
 			tasklist = new Tasklist({
 				tasks: [task._id],
 				createdBy: user._id
-			})
+			});
 			done();
 		});
 	});
@@ -75,20 +75,20 @@ describe('Tasklist Route Tests:', function() {
 			      .send({tasklist: tasklist})
 			      .end(function(tasklistErr, tasklistRes) {
 			        
-			        if (tasklistErr) console.log(tasklistErr)
+			        if (tasklistErr) console.log(tasklistErr);
 			        
 			        tasklistRes.body.tasks.should.be.an.Array.with.length(1);
 
 			        done();
 			      });
-		     })
+		     });
 		});
 	});
 
 	describe('Method Get', function() {
 		beforeEach(function (done) {			
-			tasklist.save(done)
-		})
+			tasklist.save(done);
+		});
 		it('should be able to get a list of tasklists without problems', function(done) {
 			agent.post('/auth/signin')
 				.send(credentials)
@@ -100,13 +100,13 @@ describe('Tasklist Route Tests:', function() {
 			      .send({user: user})
 			      .end(function(tasklistErr, tasklistRes) {
 			        
-			        if (tasklistErr) console.log(tasklistErr)
+			        if (tasklistErr) console.log(tasklistErr);
 
 			        tasklistRes.body.should.be.an.Array.with.length(1);
 
 			        done();
 			      });
-				})
+				});
 		});
 		it('should be able to get a single tasklist without problems', function(done) {
 	    agent.post('/auth/signin')
@@ -119,22 +119,22 @@ describe('Tasklist Route Tests:', function() {
 			      .send({user: user})
 			      .end(function(tasklistErr, tasklistRes) {
 			        
-			        if (tasklistErr) console.log(tasklistErr)
+			        if (tasklistErr) console.log(tasklistErr);
 			        
 			        tasklistRes.body.should.be.an.Object.with.property('tasks', [task._id.toString()]);
 
 			        done();
 			      });
-			  })
+			  });
 		});		
 	});
 
 	describe('Method Put', function() {
 		beforeEach(function (done) {			
 			tasklist.save(done);
-		})
+		});
 		it('should be able to post tasklist without problems', function(done) {
-	    tasklist.tasks = []
+	    tasklist.tasks = [];
 	    agent.post('/auth/signin')
 				.send(credentials)
 				.expect(200)
@@ -151,7 +151,7 @@ describe('Tasklist Route Tests:', function() {
 
 			        done();
 			      });
-			  })
+			  });
 		});
 	});
 

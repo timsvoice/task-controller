@@ -47,7 +47,7 @@ var TaskSchema = new Schema({
     default: false
   },
   isIkebox: {
-    type: true,
+    type: Boolean,
     default: false
   },
   subTasks: [{

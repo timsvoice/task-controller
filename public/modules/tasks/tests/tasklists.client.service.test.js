@@ -2,7 +2,7 @@
 
 (function() {
   // Followers Service Spec
-  describe('Followers Service Tests', function() {
+  describe('Tasklist Service Tests', function() {
     // Initialize global variables
     var Tasklist,
         Users,

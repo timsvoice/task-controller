@@ -9,15 +9,15 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 		if (!window.user) {
 			$urlRouterProvider.when('/', function ($injector, $location, $state) {
 				$state.go('home');
-			})
-		};
+			});
+		}
 		
 		// Route user to dashboard if logged in		
 		if (window.user) {
 			$urlRouterProvider.when('/', function ($injector, $location, $state) {
-				$state.go('dashboard')
-			})
-		};
+				$state.go('dashboard');
+			});
+		}
 
 		// Home state routing
 		$stateProvider.

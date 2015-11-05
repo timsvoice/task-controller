@@ -9,9 +9,9 @@ angular.module('tasks').filter('priority', function () {
       tasks.forEach(function (task) {
         if (task.important === important && task.urgent === urgent) {
           taskMatrix.push(task);
-        };
-      })
-      return taskMatrix
+        }
+      });
+      return taskMatrix;
 		};
 	}
 );

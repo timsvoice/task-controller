@@ -7,6 +7,7 @@ angular.module('users').config(['$stateProvider',
 		$stateProvider.
 		state('dashboard', {
 			url: '/dashboard',
+			controller: 'DashboardController as dbVm',
 			templateUrl: 'modules/users/views/dashboard.client.view.html'
 		}).
 		state('profile', {

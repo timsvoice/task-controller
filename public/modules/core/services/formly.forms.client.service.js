@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('core').factory('FormlyForms', [ 'Broadcast',
-	function(Broadcast) {
+angular.module('core').factory('FormlyForms', function() {
 		var form;
 
 		return {
@@ -9,6 +8,7 @@ angular.module('core').factory('FormlyForms', [ 'Broadcast',
 				form = [
 		      {
 		        type: 'input',
+		       	key: 'title',
 		        templateOptions: {
 		        	class: 'task-title',
 		        	key: 'title',
@@ -50,8 +50,9 @@ angular.module('core').factory('FormlyForms', [ 'Broadcast',
 		          lable: 'Urgent',
 		        }
 		      },		      
-				]
-			}
+				];
+				return form;
+			}			
 		};
 	}
-]);
+);

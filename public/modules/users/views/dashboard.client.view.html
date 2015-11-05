@@ -1,1 +1,19 @@
 <h1>User Dashboard</h1>
+
+<ikebox-list tasks="dbVm.tasks"></ikebox-list>
+<!-- new ikebox form modal -->
+<div zf-modal="" id="create-task-modal">
+  <a zf-close="" class="close-button">×</a>
+  <h3>New Ikebox</h3>
+  <form>
+    <label for="text">Title</label>
+    <input type="text" ng-model="dbVm.taskObj.title">
+    <label for="text">Description</label>
+    <textarea ng-model="dbVm.taskObj.description"></textarea>
+    <input id="important-checkbox" type="checkbox" ng-model="dbVm.taskObj.status.important">
+      <label for="important-checkbox">Important</label>
+    <input id="urgent-checkbox" type="checkbox" ng-model="dbVm.taskObj.status.urgent">
+      <label for="urgent-checkbox">Urgent</label>
+    <input type="submit" class="button" ng-click="dbVm.createIkebox(dbVm.taskObj)">Create Ikebox</input>
+  </form>
+</div>

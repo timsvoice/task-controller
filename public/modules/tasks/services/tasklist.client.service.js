@@ -24,7 +24,7 @@ angular.module('tasks').factory('Tasklist', ['$resource', 'Broadcast',
 						message: 'Tasklist Created!',
 						object: tasklist,
 						event: 'tasklist.update'
-					}
+					};
 					Broadcast(message);
 					return callback(message);
 				}, function (err) {
@@ -59,23 +59,23 @@ angular.module('tasks').factory('Tasklist', ['$resource', 'Broadcast',
 					return callback(message);
 				}, function (err) {
 					return callback(err);
-				})
+				});
 			},
 			findTasklist: function findTasklist (tasklistObj, callback) {
 				TasklistResource.get({
 					tasklistId: tasklistObj._id
 				}, function (res) {
 					return callback(res);
-				}, function (res) {
+				}, function (err) {
 					return callback(err);
-				})
+				});
 			},
 			findAllTasklists: function findAllTasklists (tasklistObj, callback) {
 				TasklistResource.query(function (res) {
 					return callback(res);
 				}, function (err) {
 					return callback(err);
-				})
+				});
 			}
 		};
 
