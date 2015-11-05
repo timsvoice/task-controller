@@ -46,6 +46,10 @@ var TaskSchema = new Schema({
     type: Boolean,
     default: false
   },
+  isIkebox: {
+    type: true,
+    default: false
+  },
   subTasks: [{
     type: Schema.ObjectId,
     ref: 'Task'
