@@ -9,7 +9,15 @@ angular.module('users').config(['$stateProvider',
 			url: '/dashboard',
 			controller: 'DashboardController as dbVm',
 			templateUrl: 'modules/users/views/dashboard.client.view.html'
+		}).		
+		state('dashboard.planner', {
+			url: '/planner',
+			templateUrl: 'modules/tasks/views/planner.client.view.html'
 		}).
+		state('dashboard.timer', {
+			url: '/timer',
+			templateUrl: 'modules/tasks/views/timer.client.view.html'
+		}).	
 		state('profile', {
 			url: '/settings/profile',
 			templateUrl: 'modules/users/views/settings/edit-profile.client.view.html'

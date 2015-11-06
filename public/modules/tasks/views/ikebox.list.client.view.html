@@ -1,20 +1,41 @@
 <section class="ikebox-list-container">
   <div class="ikebox-list card">
-    <div  class="card-section"
-          zf-open="create-task-modal">
+    <div  class="card-section" zf-open="create-task-modal">
       <h2>+</h2>
       <p>add new ikebox</p>
     </div>
   </div>
-
-  <div class="ikebox-list card"
-        ng-repeat="ikebox in dbVm.tasks | ikebox:true">
+  <div class="ikebox-list card" ng-repeat="ikebox in ibVm.tasks">
     <div class="card-section">
-    <h3>{{ikebox.title}}</h3>
-    <p>{{ikebox.description}}</p>
-    {{ikebox._id}}
-    <a ng-click="dbVm.deleteTask(ikebox, $index)">delete</a>
+      <h3>
+        <a href="/#!/dashboard/ikeboxes/{{ikebox._id}}">{{ikebox.title}}</a>
+      </h3>
+      <p>{{ikebox.description}}</p>
+      <a ng-click="ibVm.deleteIkebox(ikebox, $index)">delete</a>
+    </div>
+  </div>  
+  
+  <div class="ikebox-list card" ng-show="ibVm.tasks.length === 0">
+    <div class="card-section">
+    <h3><a>Sample Ikebox</a></h3>
+    <p>Lorem ipsum dolor sit amet.</p>
     </div>
   </div>
 
 </section>
+
+<div zf-modal="" id="create-task-modal">
+  <a zf-close="" class="close-button">×</a>
+  <h3>New Ikebox</h3>
+  <form>
+    <label for="text">Title</label>
+    <input type="text" ng-model="ibVm.taskObj.title">
+    <label for="text">Description</label>
+    <textarea ng-model="ibVm.taskObj.description"></textarea>
+    <input id="important-checkbox" type="checkbox" ng-model="ibVm.taskObj.status.important">
+      <label for="important-checkbox">Important</label>
+    <input id="urgent-checkbox" type="checkbox" ng-model="ibVm.taskObj.status.urgent">
+      <label for="urgent-checkbox">Urgent</label>
+    <input type="submit" class="button" ng-click="ibVm.createIkebox(ibVm.taskObj, dbVm.user._id)">Create Ikebox</input>
+  </form>
+</div>
