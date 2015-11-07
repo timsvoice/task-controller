@@ -7,7 +7,6 @@ angular.module('tasks').config(['$stateProvider',
 		$stateProvider.
 		state('dashboard.ikeboxes', {
 			url: '/ikeboxes',
-			controller: 'DashboardController as dbVm',
 			templateUrl: 'modules/tasks/views/ikebox.list.client.view.html'
 		}).	
 		state('dashboard.tasklist', {
@@ -17,7 +16,6 @@ angular.module('tasks').config(['$stateProvider',
 		}).
 		state('dashboard.ikebox', {
 			url: '/ikeboxes/:taskId',
-			controller: 'IkeboxController as ibVm',
 			templateUrl: 'modules/tasks/views/ikebox.client.view.html'
 		}).	
 		state('tasks', {

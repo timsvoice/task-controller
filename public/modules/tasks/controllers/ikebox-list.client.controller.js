@@ -7,7 +7,7 @@ angular.module('tasks').controller('IkeboxListController', ['$scope', 'Task', 'F
 
     init = function init () {
       Task.findAllTasks(function (tasks) {
-          ibVm.tasks = tasks
+        ibVm.tasks = tasks;
       }); 
     };
     init();
@@ -39,8 +39,8 @@ angular.module('tasks').controller('IkeboxListController', ['$scope', 'Task', 'F
     };
 
     // TODO two step delete process
-    ibVm.deleteIkebox = function (task, index) {
-      Task.deleteTask(task, function (response) {
+    ibVm.deleteIkebox = function (taskId, index) {
+      Task.deleteTask(taskId, function (response) {
         if (response.err) { 
           alert('Cannot delete ikebox');          
         } else {
