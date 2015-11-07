@@ -50,7 +50,10 @@ var TaskSchema = new Schema({
     type: Boolean,
     default: false
   },
-  subTasks: [TaskSchema],
+  subTasks: [{
+    type: Schema.ObjectId,
+    ref: 'Task'
+  }],
   createdBy: {
     type: Schema.ObjectId,
     ref: 'User',

@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('tasks').directive('ikebox', [
+angular.module('ikeboxes').directive('ikebox', [
 	function() {
 		return {
-			templateUrl: './modules/tasks/views/ikebox.directive.client.view.html',
+			templateUrl: './modules/ikeboxes/views/ikebox.directive.client.view.html',
 			restrict: 'E',
 			controller: 'IkeboxController as ibVm',
 			link: function postLink(scope, element, attrs) {

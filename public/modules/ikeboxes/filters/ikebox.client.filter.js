@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tasks').filter('ikebox', [
+angular.module('ikeboxes').filter('ikebox', [
 	function() {
 		return function(tasks, ikebox) {      
       var tasklist = [];

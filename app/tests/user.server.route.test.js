@@ -39,7 +39,6 @@ describe('Task Route Tests:', function() {
 				.expect(200)
 				.end(function (signinErr, signinRes) {
 					if (signinErr) done(signinErr);		
-					console.log(signinRes);
           done();
 		     });
 		});
