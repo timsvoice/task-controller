@@ -73,7 +73,7 @@ exports.deleteTask = function(req, res) {
 exports.findAllTasks = function(req, res) {
   Task.find({
     createdBy: req.user._id
-  }).sort('-created').populate('subTasks').exec(function(err, tasks) {
+  }).sort('-created').exec(function(err, tasks) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -88,7 +88,7 @@ exports.findAllTasks = function(req, res) {
  * task middleware
  */
 exports.taskByID = function(req, res, next, id) { 
-  Task.findById(id).populate('subTasks').exec(function(err, task) {
+  Task.findById(id).exec(function(err, task) {
     if (err) return next(err);
     if (! task) return next(new Error('Failed to load task ' + id));
     req.task = task ;

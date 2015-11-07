@@ -30,27 +30,6 @@ angular.module('tasks').factory('Task', ['$resource','Broadcast',
 				}, function (err) {
 					return callback(err);
 				});
-			},
-			createSubtask: function createSubtask (task, subtaskObj, userId, callback) {
-				// create new task from subTask
-				TaskService.createTask(subtaskObj, userId, function (subtaskResponse) {
-					if (subtaskResponse.error) {
-						return callback(subtaskResponse.error);
-					} else {
-						// push subTask to task.subTask
-						task.subTasks.push(subtaskResponse.object);
-						// update task
-						TaskService.updateTask(task, function (taskResponse) {
-							if (taskResponse.error) {
-								return callback(taskResponse.error)
-							} else {
-								// return new subTask task
-								console.log(taskResponse, subtaskResponse);
-								return callback(subtaskResponse);
-							};
-						})
-					}
-				})
 			},			
 			updateTask: function updateTask (taskObj, callback) {
 				TaskResource.update({

@@ -88,32 +88,32 @@
 		// 	expect(scope.error).toEqual('Unknown user');
 		// });
 
-		it('$scope.signup() should register with correct data', function() {
-			// Test expected GET request
+		// it('$scope.signup() should register with correct data', function() {
+		// 	// Test expected GET request
 			
-			scope.authentication.user = 'Fred';
-			$httpBackend.when('POST', '/auth/signup').respond(200, 'Fred');
+		// 	scope.authentication.user = 'Fred';
+		// 	$httpBackend.when('POST', '/auth/signup').respond(200, 'Fred');
 
-			scope.signup();
-			$httpBackend.flush();
+		// 	scope.signup();
+		// 	$httpBackend.flush();
 
-			// test scope value
-			expect(scope.authentication.user).toBe('Fred');
-			expect(scope.error).toEqual(undefined);
-			expect($location.url()).toBe('/');
-		});
+		// 	// test scope value
+		// 	expect(scope.authentication.user).toBe('Fred');
+		// 	expect(scope.error).toEqual(undefined);
+		// 	expect($location.url()).toBe('/');
+		// });
 
-		it('$scope.signup() should fail to register with duplicate Username', function() {
-			// Test expected POST request
-			$httpBackend.when('POST', '/auth/signup').respond(400, {
-				'message': 'Username already exists'
-			});
+		// it('$scope.signup() should fail to register with duplicate Username', function() {
+		// 	// Test expected POST request
+		// 	$httpBackend.when('POST', '/auth/signup').respond(400, {
+		// 		'message': 'Username already exists'
+		// 	});
 
-			scope.signup();
-			$httpBackend.flush();
+		// 	scope.signup();
+		// 	$httpBackend.flush();
 
-			// Test scope value
-			expect(scope.error).toBe('Username already exists');
-		});
+		// 	// Test scope value
+		// 	expect(scope.error).toBe('Username already exists');
+		// });
 	});
 }());

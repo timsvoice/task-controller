@@ -8,6 +8,7 @@ angular.module('tasks').controller('IkeboxController', ['$scope', 'Task', 'Found
     init = function init () {
       Task.findTask( $stateParams.taskId, function (task) {
         ibVm.task = task;
+        console.log(task);
       }); 
     };
     init();
@@ -26,24 +27,31 @@ angular.module('tasks').controller('IkeboxController', ['$scope', 'Task', 'Found
     ////
 
     // TODO two step delete process
-    ibVm.deleteSubtask = function (taskId, index) {
-      Task.deleteTask(taskId, function (response) {
+    ibVm.deleteSubtask = function (taskObj, index) {
+      ibVm.task.subTasks.splice(index, 1);
+      Task.updateTask(ibVm.task, function (response) {
         if (response.err) { 
-          alert('Cannot delete ikebox');          
+          alert('Cannot create subtask: ' + response.error);          
         } else {
-          ibVm.task.subTasks.splice(index, 1);
         }
       });
     };
 
     ibVm.createSubtask = function (task, subtaskObj, userId) {
-      Task.createSubtask(task, subtaskObj, userId, function (response) {
+      Task.createTask(subtaskObj, userId, function (response) {
         if (response.err) { 
           alert('Cannot create subtask: ' + response.error);          
         } else {
-          console.log(response);  
-          ibVm.task.subTasks.push(response.object);
-          FoundationApi.closeActiveElements('create-subtask-modal');
+          console.log(response);
+          task.subTasks.push(response.object)
+          Task.updateTask(task, function (response) {
+            if (response.error) {
+              alert('Failed to create task')
+            } else {              
+              FoundationApi.closeActiveElements('create-subtask-modal');
+              ibVm.task = response.object;
+            };
+          })
         }
       });
     };

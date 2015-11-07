@@ -110,15 +110,15 @@
       });
       $httpBackend.flush();       
     });
-    it('Should add a new subtask to the database and create a parent task record', function() {
-      $httpBackend.whenPOST('tasks').respond(200, task);
-      $httpBackend.whenPUT('tasks/' + taskResponse._id).respond(200, taskResponse);
-      Task.createSubtask(taskResponse, task, user._id, function (res) {
-        console.log(res.object);
-        // expect(res.object.subTasks.length).toBe(1);
-      });
-      $httpBackend.flush();       
-    });    
+    // it('Should add a new subtask to the database and create a parent task record', function() {
+    //   $httpBackend.whenPOST('tasks').respond(200, task);
+    //   $httpBackend.whenPUT('tasks/' + taskResponse._id).respond(200, taskResponse);
+    //   Task.createSubtask(taskResponse, task, user._id, function (res) {
+    //     console.log(res.object);
+    //     // expect(res.object.subTasks.length).toBe(1);
+    //   });
+    //   $httpBackend.flush();       
+    // });    
     it('Should update a task', function() {
       $httpBackend.whenPUT('tasks').respond(200, taskResponse);
       Task.updateTask(task, function (res) {

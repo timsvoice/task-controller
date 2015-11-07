@@ -25,10 +25,6 @@
     <input type="text" ng-model="ibVm.taskObj.title">
     <label for="text">Description</label>
     <textarea ng-model="ibVm.taskObj.description"></textarea>
-    <input id="important-checkbox" type="checkbox" ng-model="ibVm.taskObj.important">
-      <label for="important-checkbox">Important</label>
-    <input id="urgent-checkbox" type="checkbox" ng-model="ibVm.taskObj.urgent">
-      <label for="urgent-checkbox">Urgent</label>
-    <input type="submit" class="button" ng-click="ibVm.createIkebox(ibVm.taskObj, dbVm.user._id)">Create Ikebox</input>
+    <input type="submit" class="button" ng-click="ibVm.createIkebox(ibVm.taskObj, dbVm.user._id)">
   </form>
 </div>
