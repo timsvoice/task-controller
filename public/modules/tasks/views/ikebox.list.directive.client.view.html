@@ -1,9 +1,8 @@
-{{ibVm.tasks}}
 <section class="ikebox-list-container">
+  
   <div class="ikebox-list card">
     <div  class="card-section" zf-open="create-task-modal">
-      <h2>+</h2>
-      <p>add new ikebox</p>
+      <h2>+</h2><p>add new ikebox</p>
     </div>
   </div>
   <div class="ikebox-list card" ng-repeat="ikebox in ibVm.tasks | filter: {isIkebox: true}">
@@ -15,13 +14,6 @@
       <a ng-click="ibVm.deleteIkebox(ikebox, $index)">delete</a>
     </div>
   </div>  
-  
-  <div class="ikebox-list card" ng-show="ibVm.tasks.length === 0">
-    <div class="card-section">
-    <h3><a>Sample Ikebox</a></h3>
-    <p>Lorem ipsum dolor sit amet.</p>
-    </div>
-  </div>
 
 </section>
 
