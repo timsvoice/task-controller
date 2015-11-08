@@ -55,12 +55,12 @@ angular.module('ikeboxes').controller('IkeboxController', ['$scope', 'Task', 'Ik
       })
     }
 
-    ibVm.editTask = function editTask (task) {
-      Task.editTask(task, function (response) {
+    ibVm.updateTask = function updateTask (task) {
+      Task.updateTask(task, function (response) {
         if (response.error) {
           alert('cannot update task: ' + response.error)
         } else {
-
+          FoundationApi.closeActiveElements('edit-task-modal'); 
         }
       })
     }

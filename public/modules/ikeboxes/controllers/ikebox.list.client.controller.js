@@ -7,7 +7,6 @@ angular.module('ikeboxes').controller('IkeboxListController', ['$scope', 'Ikebox
 
     init = function init () {
       Ikebox.findAllIkeboxes(function (ikeboxes) {
-        console.log(ikeboxes);
         iblVm.ikeboxes = ikeboxes;
       }); 
     };

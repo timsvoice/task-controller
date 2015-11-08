@@ -1,8 +1,4 @@
 <section class="ikebox">
-<p>{{ibVm.ikebox}}</p> 
-<p>{{ibVm.taskObj}}</p> 
-<p>{{dbVm.user._id}}</p>
-<h1>{{ibVm.ikebox.title}}</h1>
 <a class="ikebox button" zf-open="create-task-modal">Add Task</a>
   <div class="ikebox-container">
     <div class="ikebox important urgent">
@@ -27,7 +23,7 @@
         <li class="ikebox list-item">
           <ul class="ikebox button-group">
             <li><a ng-click="dmVm.completeTask(task)" class="ikebox button">Complete</a></li>
-            <li><a ng-click="ibVm.editTask(task)" class="ikebox button">Edit</a></li>
+            <li><a zf-open="edit-subtask-modal" ng-click="ibVm.editingTask = task" class="ikebox button">Edit</a></li>
             <li><a ng-click="ibVm.deleteTask(ibVm.ikebox, task, $index)" class="ikebox button">Delete</a></li>
           </ul>        
           <h3 class="ikebox task title">{{task.title}}</h3>
@@ -42,7 +38,7 @@
         <li class="ikebox list-item">
           <ul class="ikebox button-group">
             <li><a ng-click="dmVm.completeTask(task)" class="ikebox button">Complete</a></li>
-            <li><a ng-click="ibVm.editTask(task)" class="ikebox button">Edit</a></li>
+            <li><a zf-open="edit-subtask-modal" ng-click="ibVm.editingTask = task" class="ikebox button">Edit</a></li>
             <li><a ng-click="ibVm.deleteTask(ibVm.ikebox, task, $index)" class="ikebox button">Delete</a></li>
           </ul>        
           <h3 class="ikebox task title">{{task.title}}</h3>
@@ -57,7 +53,7 @@
         <li class="ikebox list-item">
           <ul class="ikebox button-group">
             <li><a ng-click="dmVm.completeTask(task)" class="ikebox button">Complete</a></li>
-            <li><a ng-click="ibVm.editTask(task)" class="ikebox button">Edit</a></li>
+            <li><a zf-open="edit-subtask-modal" ng-click="ibVm.editingTask = task" class="ikebox button">Edit</a></li>
             <li><a ng-click="ibVm.deleteTask(ibVm.ikebox, task, $index)" class="ikebox button">Delete</a></li>
           </ul>        
           <h3 class="ikebox task title">{{task.title}}</h3>
@@ -97,6 +93,6 @@
       <label for="important-checkbox">Important</label>
     <input id="urgent-checkbox" type="checkbox" ng-model="ibVm.editingTask.urgent">
       <label for="urgent-checkbox">Urgent</label>
-    <input type="submit" class="button" ng-click="ibVm.editTask(ibVm.task)"></input>
+    <input type="submit" class="button" ng-click="ibVm.updateTask(ibVm.editingTask)"></input>
   </form>
 </div>
