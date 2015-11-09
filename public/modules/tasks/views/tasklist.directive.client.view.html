@@ -1,0 +1,30 @@
+<section class="tasklist-list-container">
+  user{{dbVm.user._id}}
+  <div class="tasklist-list card">
+    <div  class="card-section" zf-open="create-tasklist-modal">
+      <h2>+</h2><p>add new tasklist</p>
+    </div>
+  </div>
+  <div class="tasklist-list card" ng-repeat="tasklist in tlVm.tasklists">
+    <div class="card-section">
+      <h3>
+        <a href="/#!/dashboard/tasklistes/{{tasklist._id}}">{{tasklist.title}}</a>
+      </h3>
+      <p>{{tasklist.description}}</p>
+      <a ng-click="tlVm.deleteTasklist(tasklist, $index)">delete</a>
+    </div>
+  </div>  
+
+</section>
+
+<div zf-modal="" id="create-tasklist-modal">
+  <a zf-close="" class="close-button">×</a>
+  <h3>New Tasklist</h3>
+  <form>
+    <label for="text">Title</label>
+    <input type="text" ng-model="tlVm.tasklistObj.title">
+    <label for="text">Description</label>
+    <textarea ng-model="tlVm.tasklistObj.description"></textarea>
+    <input type="submit" class="button" ng-click="tlVm.createTasklist(tlVm.tasklistObj, dbVm.user._id)">
+  </form>
+</div>

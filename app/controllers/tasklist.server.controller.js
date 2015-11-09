@@ -12,8 +12,7 @@ var mongoose = require('mongoose'),
  * Create a Tasklist
  */
 exports.createTasklist = function(req, res) {
-  
-  var tasklist = new Tasklist(req.body.tasklist);
+  var tasklist = new Tasklist(req.body);
 
   tasklist.save(function(err) {
     if (err) {
@@ -56,7 +55,7 @@ exports.updateTasklist = function(req, res) {
  * Delete an Tasklist
  */
 exports.deleteTasklist = function(req, res) {
-  var tasklist = req.body.tasklist ;
+  var tasklist = req.tasklist;
 
   tasklist.remove(function(err) {
     if (err) {
@@ -74,7 +73,7 @@ exports.deleteTasklist = function(req, res) {
  */
 exports.findAllTasklists = function(req, res) {
   Tasklist.find({
-    createdBy: req.body.user._id
+    createdBy: req.user._id
   }).sort('-created').exec(function(err, tasklists) {
     if (err) {
       return res.status(400).send({

@@ -28,6 +28,7 @@ angular.module('tasks').factory('Tasklist', ['$resource', 'Broadcast',
 					Broadcast(message);
 					return callback(message);
 				}, function (err) {
+					console.log(err);
 					return callback(err);
 				});
 			},
@@ -47,6 +48,7 @@ angular.module('tasks').factory('Tasklist', ['$resource', 'Broadcast',
 				});
 			},
 			deleteTasklist: function deleteTasklist (tasklistObj, callback) {
+				console.log(tasklistObj._id);
 				TasklistResource.delete({
 					tasklistId: tasklistObj._id
 				}, function (tasklist) {
@@ -58,6 +60,7 @@ angular.module('tasks').factory('Tasklist', ['$resource', 'Broadcast',
 					Broadcast(message);
 					return callback(message);
 				}, function (err) {
+					console.log(err);
 					return callback(err);
 				});
 			},
@@ -70,10 +73,11 @@ angular.module('tasks').factory('Tasklist', ['$resource', 'Broadcast',
 					return callback(err);
 				});
 			},
-			findAllTasklists: function findAllTasklists (tasklistObj, callback) {
+			findAllTasklists: function findAllTasklists (callback) {
 				TasklistResource.query(function (res) {
 					return callback(res);
 				}, function (err) {
+					console.log(err);
 					return callback(err);
 				});
 			}

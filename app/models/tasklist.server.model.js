@@ -10,7 +10,15 @@ var mongoose = require('mongoose'),
  * Tasklist Schema
  */
 var TasklistSchema = new Schema({
-	tasks: [{
+  title: {
+    type: String,
+    required: 'Each tasklist needs a title'
+  },
+  description: {
+    type: String,
+    required: 'Each task needs a short description'
+  },
+  tasks: [{
     type: Schema.ObjectId,
     ref: 'Task'
   }],

@@ -7,7 +7,6 @@ angular.module('tasks').config(['$stateProvider',
 		$stateProvider.
 		state('dashboard.tasklist', {
 			url: '/tasklists',
-			controller: 'TaskListController as dbVm',
 			templateUrl: 'modules/tasks/views/tasklist.client.view.html'
 		}).
 		state('tasks', {

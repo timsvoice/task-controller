@@ -48,6 +48,8 @@ describe('Tasklist Model Unit Tests:', function() {
 
 		user.save(function() { 
 			tasklist = new Tasklist({
+				title: faker.lorem.words(2),
+				description: faker.lorem.sentence(2),				
 				tasks: [task._id],
 				createdBy: user._id			
 			});

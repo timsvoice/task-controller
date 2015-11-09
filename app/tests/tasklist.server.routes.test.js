@@ -56,6 +56,8 @@ describe('Tasklist Route Tests:', function() {
 
 		user.save(function() { 
 			tasklist = new Tasklist({
+				title: faker.lorem.words(2),
+				description: faker.lorem.sentence(2),				
 				tasks: [task._id],
 				createdBy: user._id
 			});
@@ -72,7 +74,7 @@ describe('Tasklist Route Tests:', function() {
 					if (signinErr) done(signinErr);		
 			    agent.post('/tasklists')
 			      .expect(200)
-			      .send({tasklist: tasklist})
+			      .send(tasklist)
 			      .end(function(tasklistErr, tasklistRes) {
 			        
 			        if (tasklistErr) console.log(tasklistErr);
@@ -97,7 +99,6 @@ describe('Tasklist Route Tests:', function() {
 					if (signinErr) done(signinErr);
 			    agent.get('/tasklists')
 			      .expect(200)
-			      .send({user: user})
 			      .end(function(tasklistErr, tasklistRes) {
 			        
 			        if (tasklistErr) console.log(tasklistErr);

@@ -48,8 +48,8 @@ angular.module('ikeboxes').controller('IkeboxListController', ['$scope', 'Ikebox
     };    
 
     // TODO two step delete process
-    iblVm.deleteIkebox = function deleteIkebox (ikeboxId, index) {
-      Ikebox.deleteIkebox(ikeboxId, function (response) {
+    iblVm.deleteIkebox = function deleteIkebox (ikebox, index) {
+      Ikebox.deleteIkebox(ikebox, function (response) {
         if (response.err) { 
           alert('Cannot delete ikebox');          
         } else {
