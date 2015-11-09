@@ -50,5 +50,15 @@ angular.module('tasks').controller('TaskPlannerController', ['$scope', 'Tasklist
       }
     };
 
+    tpVm.removeFromTasklist = function removeFromTasklist (tasklist, index) {
+      console.log(tasklist);
+      tasklist.tasks.splice(index, 1);
+      tasklist.$update(function (tasklist) {
+        tpVm.tasklist = tasklist;
+      }, function (error) {
+        alert('Failed')
+      })
+    }
+
 	}
 ]);

@@ -31,6 +31,7 @@
     <li class="tasklist-planner list-item">
       <h3>{{task.title}}</h3>
       <p>{{task.description}}</p>
+      <div class="button" ng-click="tpVm.removeFromTasklist(tpVm.tasklist, $index)">-</div>      
     </li>
   </ul>
 </div>
