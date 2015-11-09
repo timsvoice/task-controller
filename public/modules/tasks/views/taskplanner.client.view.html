@@ -1,5 +1,56 @@
 <h2>Plan your day</h2>
 
-<ikebox-planner></ikebox-planner>
+<h2>Ikebox Planner</h2>
+<div class="ikebox-planner">
+  <div class="ikebox-planner-selector">
+    <select name="selectIkebox" ng-model="tpVm.ikebox"
+      ng-options="ikebox as ikebox.title for ikebox in tpVm.ikeboxes">
+    </select>    
+  </div>
+  <h3>{{tpVm.ikebox.title}}</h3>
+  <div class="" ng-show="tpVm.ikebox">  
+  <h2>Important and Urgent</h2>
+  <div class="ikebox-planner important urgent"
+    ng-repeat="task in tpVm.ikebox.tasks | filter: {important: true, urgent: true}">      
+      <h3>{{task.title}}</h3>
+      <p>{{task.description}}</p>
+      <div class="button" ng-click="tpVm.addToTasklist(task._id, tpVm.tasklist)">+</div>
+  </div>
+  <h2>Important and Not Urgent</h2>
+  <div class="ikebox-planner important not-urgent" 
+    ng-repeat="task in tpVm.ikebox.tasks | filter: {important: true, urgent: false}">
+      <h3>{{task.title}}</h3>
+      <p>{{task.description}}</p>
+      <div class="button" ng-click="tpVm.addToTasklist(task._id, tpVm.tasklist)">+</div>
+  </div>
+  <h2>Not Important and Urgent</h2> 
+  <div class="ikebox-planner urgent not-important" 
+    ng-repeat="task in tpVm.ikebox.tasks | filter: {important: false, urgent: true}">          
+      <h3>{{task.title}}</h3>
+      <p>{{task.description}}</p>
+      <div class="button" ng-click="tpVm.addToTasklist(task._id, tpVm.tasklist)">+</div>
+  </div>
+  <h2>Not Important and Not Urgent</h2>
+  <div class="ikebox-planner not-important not-urgent" 
+    ng-repeat="task in tpVm.ikebox.tasks | filter: {important: false, urgent: false}">
+      <h3>{{task.title}}</h3>
+      <p>{{task.description}}</p>
+      <div class="button" ng-click="tpVm.addToTasklist(task._id, tpVm.tasklist)">+</div>
+    </div>
+  </div>
+  <div ng-hide="tpVm.ikebox">
+    Select Ikebox
+  </div>
+</div>
 
-<task-planner></task-planner>
+<h2>tasklist planner</h2>
+<div class="tasklist-planner">
+  <h2>{{tpVm.tasklist.title}}</h2>
+  <ul class="tasklist-planner list"
+      ng-repeat="task in tpVm.tasklist.tasks">
+    <li class="tasklist-planner list-item">
+      <h3>{{task.title}}</h3>
+      <p>{{task.description}}</p>
+    </li>
+  </ul>
+</div>

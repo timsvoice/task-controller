@@ -11,6 +11,7 @@ angular.module('tasks').config(['$stateProvider',
 		}).
 		state('dashboard.taskplanner', {
 			url: '/taskplanner/:tasklistId',
+			controller: 'TaskPlannerController as tpVm',
 			templateUrl: 'modules/tasks/views/taskplanner.client.view.html'
 		}).		
 		state('tasks', {

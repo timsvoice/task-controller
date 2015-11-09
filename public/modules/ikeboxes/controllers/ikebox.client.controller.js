@@ -83,17 +83,5 @@ angular.module('ikeboxes').controller('IkeboxController', ['$scope', 'Task', 'Ik
       })
     };
 
-    ibVm.addToTasklist = function addToTasklist (taskId, tasklist) {
-      Tasklist.addToTasklist(taskId, tasklist, function (response) {
-        if (response.error) {
-          alert('all the errors');
-          console.log(response.error);
-        } else {
-          tasklist = response.object;
-          console.log(response.object);
-        }
-      })
-    };
-
   }
 ]);
