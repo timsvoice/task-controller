@@ -9,34 +9,14 @@
   </div>
   <h3>{{tpVm.ikebox.title}}</h3>
   <div class="" ng-show="tpVm.ikebox">  
-  <h2>Important and Urgent</h2>
+  <!-- <h2>Important and Urgent</h2> -->
   <div class="ikebox-planner important urgent"
-    ng-repeat="task in tpVm.ikebox.tasks | filter: {important: true, urgent: true}">      
+    ng-repeat="task in tpVm.ikebox.tasks | orderBy:-important:true | orderBy:['important','urgent']:true">
       <h3>{{task.title}}</h3>
       <p>{{task.description}}</p>
+      <p>imp: {{task.important}}</p>
+      <p>urg: {{task.urgent}}</p>
       <div class="button" ng-click="tpVm.addToTasklist(task._id, tpVm.tasklist)">+</div>
-  </div>
-  <h2>Important and Not Urgent</h2>
-  <div class="ikebox-planner important not-urgent" 
-    ng-repeat="task in tpVm.ikebox.tasks | filter: {important: true, urgent: false}">
-      <h3>{{task.title}}</h3>
-      <p>{{task.description}}</p>
-      <div class="button" ng-click="tpVm.addToTasklist(task._id, tpVm.tasklist)">+</div>
-  </div>
-  <h2>Not Important and Urgent</h2> 
-  <div class="ikebox-planner urgent not-important" 
-    ng-repeat="task in tpVm.ikebox.tasks | filter: {important: false, urgent: true}">          
-      <h3>{{task.title}}</h3>
-      <p>{{task.description}}</p>
-      <div class="button" ng-click="tpVm.addToTasklist(task._id, tpVm.tasklist)">+</div>
-  </div>
-  <h2>Not Important and Not Urgent</h2>
-  <div class="ikebox-planner not-important not-urgent" 
-    ng-repeat="task in tpVm.ikebox.tasks | filter: {important: false, urgent: false}">
-      <h3>{{task.title}}</h3>
-      <p>{{task.description}}</p>
-      <div class="button" ng-click="tpVm.addToTasklist(task._id, tpVm.tasklist)">+</div>
-    </div>
   </div>
   <div ng-hide="tpVm.ikebox">
     Select Ikebox

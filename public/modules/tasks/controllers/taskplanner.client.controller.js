@@ -24,16 +24,17 @@ angular.module('tasks').controller('TaskPlannerController', ['$scope', 'Tasklist
     }
 
     checkDuplicate = function checkDuplicate (tasklist, taskId) {
+      var duplicate = false;
       tasklist.tasks.forEach(function (task) {
         if (task._id === taskId) {
-          return true;
-        } else {
-          return false;
+          duplicate = true
         }
-      })
+      });
+      return duplicate;
     }
 
     tpVm.addToTasklist = function addToTasklist (taskId, tasklist) {
+      console.log(checkDuplicate(tasklist, taskId));
       if (checkDuplicate(tasklist, taskId) === false) {
         Tasklist.addToTasklist(taskId, tasklist, function (response) {
           if (response.error) {
