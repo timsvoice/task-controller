@@ -80,7 +80,15 @@ angular.module('tasks').factory('Tasklist', ['$resource', 'Broadcast',
 					console.log(err);
 					return callback(err);
 				});
-			}
+			},
+	    addToTasklist: function addToTasklist (taskId, tasklist, callback) {
+	      tasklist.tasks.push(taskId);
+	      TasklistService.updateTasklist(tasklist, function (tasklistRes) {
+	        return callback(tasklistRes);
+	      }, function (error) {
+	        return callback(error);
+	      })
+	    }			
 		};
 
 		return TasklistService;

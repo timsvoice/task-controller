@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('ikeboxes').controller('IkeboxController', ['$scope', 'Task', 'Ikebox', 'FoundationApi', '$stateParams',
-  function($scope, Task, Ikebox, FoundationApi, $stateParams) {
+angular.module('ikeboxes').controller('IkeboxController', ['$scope', 'Task', 'Ikebox', 'Tasklist', 'FoundationApi', '$stateParams',
+  function($scope, Task, Ikebox, Tasklist, FoundationApi, $stateParams) {
     var ibVm = this,
         init;
 
@@ -83,15 +83,17 @@ angular.module('ikeboxes').controller('IkeboxController', ['$scope', 'Task', 'Ik
       })
     };
 
-    ibVm.addToTasklist = function (taskId, tasklist) {
-      tasklist.tasks.push(taskId);
-      tasklist.$update(function (tasklistRes) {
-        console.log(tasklistRes);
-        tasklist = tasklistRes;
-      }, function (error) {
-        console.log(error);
+    ibVm.addToTasklist = function addToTasklist (taskId, tasklist) {
+      Tasklist.addToTasklist(taskId, tasklist, function (response) {
+        if (response.error) {
+          alert('all the errors');
+          console.log(response.error);
+        } else {
+          tasklist = response.object;
+          console.log(response.object);
+        }
       })
-    }
+    };
 
   }
 ]);
