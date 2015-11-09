@@ -8,7 +8,7 @@
   <div class="tasklist-list card" ng-repeat="tasklist in tlVm.tasklists">
     <div class="card-section">
       <h3>
-        <a href="/#!/dashboard/tasklistes/{{tasklist._id}}">{{tasklist.title}}</a>
+        <a href="/#!/dashboard/taskplanner/{{tasklist._id}}">{{tasklist.title}}</a>
       </h3>
       <p>{{tasklist.description}}</p>
       <a ng-click="tlVm.deleteTasklist(tasklist, $index)">delete</a>

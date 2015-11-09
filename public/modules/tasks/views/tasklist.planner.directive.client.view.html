@@ -1,0 +1,11 @@
+<h2>tasklist planner</h2>
+<div class="tasklist-planner">
+  <h2>{{tlVm.tasklist.title}}</h2>
+  <ul class="tasklist-planner list"
+      ng-repeat="task in tlVm.tasklist.tasks">
+    <li class="tasklist-planner list-item">
+      <h3>{{task.title}}</h3>
+      <p>{{task.description}}</p>
+    </li>
+  </ul>
+</div>

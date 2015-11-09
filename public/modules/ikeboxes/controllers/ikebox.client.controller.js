@@ -6,9 +6,15 @@ angular.module('ikeboxes').controller('IkeboxController', ['$scope', 'Task', 'Ik
         init;
 
     init = function init () {
-      Ikebox.findIkebox( $stateParams.ikeboxId, function (ikebox) {
-        ibVm.ikebox = ikebox;
-      }); 
+      if ($stateParams.ikeboxId) {
+        Ikebox.findIkebox( $stateParams.ikeboxId, function (ikebox) {
+          ibVm.ikebox = ikebox;
+        }); 
+      } else if ($stateParams.tasklistId) {
+        Ikebox.findAllIkeboxes(function (ikeboxes) {
+          ibVm.ikeboxes = ikeboxes;
+        })
+      }
     };
     init();
 
@@ -76,6 +82,16 @@ angular.module('ikeboxes').controller('IkeboxController', ['$scope', 'Task', 'Ik
         }
       })
     };
+
+    ibVm.addToTasklist = function (taskId, tasklist) {
+      tasklist.tasks.push(taskId);
+      tasklist.$update(function (tasklistRes) {
+        console.log(tasklistRes);
+        tasklist = tasklistRes;
+      }, function (error) {
+        console.log(error);
+      })
+    }
 
   }
 ]);

@@ -74,7 +74,7 @@ exports.deleteTasklist = function(req, res) {
 exports.findAllTasklists = function(req, res) {
   Tasklist.find({
     createdBy: req.user._id
-  }).sort('-created').exec(function(err, tasklists) {
+  }).sort('-created').populate('tasks').exec(function(err, tasklists) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -89,7 +89,7 @@ exports.findAllTasklists = function(req, res) {
  * tasklist middleware
  */
 exports.tasklistByID = function(req, res, next, id) { 
-  Tasklist.findById(id).exec(function(err, tasklist) {
+  Tasklist.findById(id).populate('tasks').exec(function(err, tasklist) {
     if (err) return next(err);
     if (! tasklist) return next(new Error('Failed to load tasklist ' + id));
     req.tasklist = tasklist;    

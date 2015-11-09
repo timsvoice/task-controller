@@ -64,9 +64,9 @@ angular.module('tasks').factory('Tasklist', ['$resource', 'Broadcast',
 					return callback(err);
 				});
 			},
-			findTasklist: function findTasklist (tasklistObj, callback) {
+			findTasklist: function findTasklist (tasklistId, callback) {
 				TasklistResource.get({
-					tasklistId: tasklistObj._id
+					tasklistId: tasklistId
 				}, function (res) {
 					return callback(res);
 				}, function (err) {
