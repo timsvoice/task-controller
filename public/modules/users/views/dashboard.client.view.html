@@ -1,16 +1,8 @@
-<h1>User Dashboard</h1>
-
-<div class="dashboard-menu">
-  <a class="dashboard-menu-item" href="/#!/dashboard/ikeboxes">
-    Ikeboxes
-  </a>
-  <a class="dashboard-menu-item" href="/#!/dashboard/tasklists">
-    Tasklists
-  </a>  
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h2>This will be the page title</h2>
+  </div>
+  <div class="dashboard-content" ui-view>
+    <ikebox-list></ikebox-list>
+  </div>
 </div>
-
-<div ui-view>
-  <ikebox-list></ikebox-list>
-</div>
-
-<!-- new ikebox form modal -->

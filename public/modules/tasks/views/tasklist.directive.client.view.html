@@ -1,20 +1,25 @@
 <section class="tasklist-list-container">
-  user{{dbVm.user._id}}
-  <div class="tasklist-list card">
-    <div  class="card-section" zf-open="create-tasklist-modal">
-      <h2>+</h2><p>add new tasklist</p>
+  <div class="tasklist-list grid-block large-up-3 medium-up-2 small-up-1">
+    <div class="tasklist-list-card">
+      <div class="tasklist-card">
+        <div  class="card-section" zf-open="create-tasklist-modal">
+          <h2>+</h2><p>add new tasklist</p>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="tasklist-list card" ng-repeat="tasklist in tlVm.tasklists">
-    <div class="card-section">
-      <h3>
-        <a href="/#!/dashboard/taskplanner/{{tasklist._id}}">{{tasklist.title}}</a>
-      </h3>
-      <p>{{tasklist.description}}</p>
-      <a ng-click="tlVm.deleteTasklist(tasklist, $index)">delete</a>
+    <div class="tasklist-list-card" ng-repeat="tasklist in tlVm.tasklists">
+      <div class="tasklist-card">
+        <div class="card-section">
+          <h3>
+            <a href="/#!/dashboard/taskplanner/{{tasklist._id}}">{{tasklist.title}}</a>
+          </h3>
+          <p>{{tasklist.description}}</p>
+          <p>{{tasklist.tasks.length}} Tasks</p>
+          <a ng-click="tlVm.deleteTasklist(tasklist, $index)">delete</a>
+        </div>
+      </div>
     </div>
   </div>  
-
 </section>
 
 <div zf-modal="" id="create-tasklist-modal">

@@ -16,9 +16,13 @@ angular.module('tasks').factory('Task', ['$resource','Broadcast',
 		});
 
 		TaskService = {
-			createTask: function createTask (taskObj, userId, callback) {
+			createTask: function createTask (taskObj, userId, callback) {				
+	      if (taskObj.time) {
+	        taskObj.status.timeAllocated = (taskObj.time * 60);
+	        delete taskObj.time;
+	      };				
 				var task = new TaskResource(taskObj);
-				task.createdBy = userId;
+				task.createdBy = userId;				
 				task.$save(function (task) {
 					message = {
 						message: 'Task Created!',
@@ -32,6 +36,10 @@ angular.module('tasks').factory('Task', ['$resource','Broadcast',
 				});
 			},			
 			updateTask: function updateTask (taskObj, callback) {
+	      if (taskObj.time) {
+	        taskObj.status.timeAllocated = (taskObj.time * 60);
+	        delete taskObj.time;
+	      };				
 				TaskResource.update({
 					taskId: taskObj._id
 				}, taskObj, function (task) {
@@ -78,6 +86,12 @@ angular.module('tasks').factory('Task', ['$resource','Broadcast',
 					console.log(err);
 					return callback(err);
 				});
+			},
+			completeTask: function completeTask (task, callback) {
+				task.status.completed = true;
+				TaskService.updateTask(task, function (response) {
+					return callback(response);
+				})
 			}
 		};
 

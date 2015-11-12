@@ -1,65 +1,105 @@
-<section class="ikebox">
-<a class="ikebox button" zf-open="create-task-modal">Add Task</a>
+<section class="">
+<a class="add-ikebox button" zf-open="create-task-modal">Add Task</a>
   <div class="ikebox-container">
-    <div class="ikebox important urgent">
-      <h2 class="ikebox title top">I/U</h2>                  
-      <ul class="ikebox list" 
-          ng-repeat="task in ibVm.ikebox.tasks | filter: {important: true, urgent: true}">
-        <li class="ikebox list-item">
-          <ul class="ikebox button-group">
-            <li><a ng-click="ibVm.completeTask(task)" class="ikebox button">Complete</a></li>
-            <li><a zf-open="edit-subtask-modal" ng-click="ibVm.editingTask = task" class="ikebox button">Edit</a></li>
-            <li><a ng-click="ibVm.deleteTask(ibVm.ikebox, task, $index)" class="ikebox button">Delete</a></li>
-          </ul>
-          <h3 class="ikebox task title">{{task.title}}</h3>
-          <p class="ikebox task description">{{task.description}}</p>
-        </li>
-      </ul>
+    <div class="ikebox important urgent">      
+      <div class="ikebox-header">        
+        <div class="ikebox-title top">
+          <h2>Important + Urgent</h2>
+        </div>                  
+      </div>
+      <div class="ikebox-task-list-container">
+        <ul class="ikebox-task-list">
+          <li class="ikebox-list-item" ng-repeat="task in ibVm.ikebox.tasks | filter: {important: true, urgent: true}"
+          ng-class="{'important': task.important, 'urgent': task.urgent}">
+            <div class="ikebox-list-item-details">
+              <h3 class="ikebox-task-title">{{task.title}}</h3>
+              <p class="ikebox-task-description">{{task.description}}</p>
+              <p class="ikebox-task-time">{{task.status.timeAllocated - task.status.timeRemaning | timeMinutes}} Minutes</p>
+            </div>
+            <div class="ikebox-list-item-functions">
+              <a ng-hide="task.status.completed" ng-click="ibVm.completeTask(task)">Complete</a>
+              <a zf-open="edit-subtask-modal" ng-click="ibVm.editingTask = task">Edit</a>
+              <a ng-click="ibVm.deleteTask(ibVm.ikebox, task, $index)">Delete</a>
+            </div>                    
+            <p></p>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="ikebox important not-urgent">   
-    <h2 class="ikebox title side">I/NU</h2>   
-      <ul class="ikebox list" 
-          ng-repeat="task in ibVm.ikebox.tasks | filter: {important: true, urgent: false}">
-        <li class="ikebox list-item">
-          <ul class="ikebox button-group">
-            <li><a ng-click="dmVm.completeTask(task)" class="ikebox button">Complete</a></li>
-            <li><a zf-open="edit-subtask-modal" ng-click="ibVm.editingTask = task" class="ikebox button">Edit</a></li>
-            <li><a ng-click="ibVm.deleteTask(ibVm.ikebox, task, $index)" class="ikebox button">Delete</a></li>
-          </ul>        
-          <h3 class="ikebox task title">{{task.title}}</h3>
-          <p class="ikebox task description">{{task.description}}</p>
-        </li>
-      </ul>
+      <div class="ikebox-header">        
+        <div class="ikebox-title side">
+          <h2>Important + Not Urgent</h2>
+        </div> 
+      </div>  
+      <div class="ikebox-task-list-container">
+        <ul class="ikebox-task-list">
+          <li class="ikebox-list-item"  
+            ng-repeat="task in ibVm.ikebox.tasks | filter: {important: true, urgent: false}"
+            ng-class="{'important': task.important, 'urgent': task.urgent, 'not-important': !task.important, 'not-urgent': !task.urgent}">
+            <div class="ikebox-list-item-details">
+              <h3 class="ikebox-task-title">{{task.title}}</h3>
+              <p class="ikebox-task-description">{{task.description}}</p>
+              <p class="ikebox-task-time">{{task.status.timeAllocated - task.status.timeRemaning | timeMinutes}} Minutes</p>
+            </div>
+            <div class="ikebox-list-item-functions">
+              <a ng-hide="task.status.completed" ng-click="ibVm.completeTask(task)">Complete</a>
+              <a zf-open="edit-subtask-modal" ng-click="ibVm.editingTask = task">Edit</a>
+              <a ng-click="ibVm.deleteTask(ibVm.ikebox, task, $index)">Delete</a>
+            </div> 
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="ikebox not-important urgent">
-      <h2 class="ikebox title side">NI/U</h2>
-      <ul class="ikebox list" 
-          ng-repeat="task in ibVm.ikebox.tasks | filter: {important: false, urgent: true}">
-        <li class="ikebox list-item">
-          <ul class="ikebox button-group">
-            <li><a ng-click="dmVm.completeTask(task)" class="ikebox button">Complete</a></li>
-            <li><a zf-open="edit-subtask-modal" ng-click="ibVm.editingTask = task" class="ikebox button">Edit</a></li>
-            <li><a ng-click="ibVm.deleteTask(ibVm.ikebox, task, $index)" class="ikebox button">Delete</a></li>
-          </ul>        
-          <h3 class="ikebox task title">{{task.title}}</h3>
-          <p class="ikebox task description">{{task.description}}</p>
-        </li>
-      </ul>      
+      <div class="ikebox-header">        
+        <div class="ikebox-title side">
+          <h2>Not Important + Urgent</h2>
+        </div>
+      </div>
+      <div class="ikebox-task-list-container">
+        <ul class="ikebox-task-list">
+          <li class="ikebox-list-item"  
+            ng-repeat="task in ibVm.ikebox.tasks | filter: {important: false, urgent: true}"
+            ng-class="{'important': task.important, 'urgent': task.urgent, 'not-important': !task.important, 'not-urgent': !task.urgent}">
+            <div class="ikebox-list-item-details">
+              <h3 class="ikebox-task-title">{{task.title}}</h3>
+              <p class="ikebox-task-description">{{task.description}}</p>
+              <p class="ikebox-task-time">{{task.status.timeAllocated - task.status.timeRemaning | timeMinutes}} Minutes</p>
+            </div>
+            <div class="ikebox-list-item-functions">
+              <a ng-hide="task.status.completed" ng-click="ibVm.completeTask(task)">Complete</a>
+              <a zf-open="edit-subtask-modal" ng-click="ibVm.editingTask = task">Edit</a>
+              <a ng-click="ibVm.deleteTask(ibVm.ikebox, task, $index)">Delete</a>
+            </div> 
+          </li>
+        </ul> 
+      </div>    
     </div>
     <div class="ikebox not-important not-urgent">
-      <h2 class="ikebox title top">NI/NU</h2>
-      <ul class="ikebox list" 
-          ng-repeat="task in ibVm.ikebox.tasks | filter: {important: false, urgent: false}">
-        <li class="ikebox list-item">
-          <ul class="ikebox button-group">
-            <li><a ng-click="dmVm.completeTask(task)" class="ikebox button">Complete</a></li>
-            <li><a zf-open="edit-subtask-modal" ng-click="ibVm.editingTask = task" class="ikebox button">Edit</a></li>
-            <li><a ng-click="ibVm.deleteTask(ibVm.ikebox, task, $index)" class="ikebox button">Delete</a></li>
-          </ul>        
-          <h3 class="ikebox task title">{{task.title}}</h3>
-          <p class="ikebox task description">{{task.description}}</p>
-        </li>
-      </ul>       
+      <div class="ikebox-header">        
+        <div class="ikebox-title top">
+          <h2>Not Important + Not Urgent</h2>
+        </div>
+      </div>
+      <div class="ikebox-task-list-container">
+        <ul class="ikebox-task-list">
+          <li class="ikebox-list-item"  
+            ng-repeat="task in ibVm.ikebox.tasks | filter: {important: false, urgent: false}"
+            ng-class="{'important': task.important, 'urgent': task.urgent, 'not-important': !task.important, 'not-urgent': !task.urgent}">
+            <div class="ikebox-list-item-details">
+              <h3 class="ikebox-task-title">{{task.title}}</h3>
+              <p class="ikebox-task-description">{{task.description}}</p>
+              <p class="ikebox-task-time">{{task.status.timeAllocated - task.status.timeRemaning | timeMinutes}} Minutes</p>
+            </div>
+            <div class="ikebox-list-item-functions">
+              <a ng-hide="task.status.completed" ng-click="ibVm.completeTask(task)">Complete</a>
+              <a zf-open="edit-subtask-modal" ng-click="ibVm.editingTask = task">Edit</a>
+              <a ng-click="ibVm.deleteTask(ibVm.ikebox, task, $index)">Delete</a>
+            </div> 
+          </li>
+        </ul>
+      </div>      
     </div>
   </div>
 </section>
@@ -76,7 +116,8 @@
     <input id="important-checkbox" type="checkbox" ng-model="ibVm.taskObj.important">
       <label for="important-checkbox">Important</label>
     <input id="urgent-checkbox" type="checkbox" ng-model="ibVm.taskObj.urgent">
-      <label for="urgent-checkbox">Urgent</label>
+      <label for="urgent-checkbox">Urgent</label>      
+    <input type="number" ng-model="ibVm.taskObj.time">
     <input type="submit" class="button" ng-click="ibVm.createTask(ibVm.ikebox, ibVm.taskObj, dbVm.user._id)"></input>
   </form>
 </div>
@@ -93,6 +134,7 @@
       <label for="important-checkbox">Important</label>
     <input id="urgent-checkbox" type="checkbox" ng-model="ibVm.editingTask.urgent">
       <label for="urgent-checkbox">Urgent</label>
+    <input type="number" ng-model="ibVm.editingTask.time">      
     <input type="submit" class="button" ng-click="ibVm.updateTask(ibVm.editingTask)"></input>
   </form>
 </div>

@@ -1,19 +1,24 @@
 <section class="ikebox-list-container">
-  <div class="ikebox-list card">
-    <div  class="card-section" zf-open="create-ikebox-modal">
-      <h2>+</h2><p>add new ikebox</p>
+  <div class="ikebox-list grid-block large-up-3 medium-up-2 small-up-1">
+    <div class="ikebox-list-card">
+      <div class="ikebox-card">
+        <div class="card-section" zf-open="create-ikebox-modal">
+          <h2>+</h2><p>add new ikebox</p>
+        </div>
+      </div>
     </div>
+    <div class="ikebox-list-card" ng-repeat="ikebox in iblVm.ikeboxes">
+      <div class="ikebox-card">
+        <div class="card-section">
+          <h3>
+            <a href="/#!/dashboard/ikeboxes/{{ikebox._id}}">{{ikebox.title}}</a>
+          </h3>
+          <p>{{ikebox.description}}</p>
+          <a ng-click="iblVm.deleteIkebox(ikebox._id, $index)">delete</a>
+        </div>
+      </div>
+    </div>  
   </div>
-  <div class="ikebox-list card" ng-repeat="ikebox in iblVm.ikeboxes">
-    <div class="card-section">
-      <h3>
-        <a href="/#!/dashboard/ikeboxes/{{ikebox._id}}">{{ikebox.title}}</a>
-      </h3>
-      <p>{{ikebox.description}}</p>
-      <a ng-click="iblVm.deleteIkebox(ikebox._id, $index)">delete</a>
-    </div>
-  </div>  
-
 </section>
 
 <div zf-modal="" id="create-ikebox-modal">

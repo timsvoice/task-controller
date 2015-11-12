@@ -8,15 +8,16 @@
     </select>    
   </div>
   <h3>{{tpVm.ikebox.title}}</h3>
-  <div class="" ng-show="tpVm.ikebox">  
-  <!-- <h2>Important and Urgent</h2> -->
   <div class="ikebox-planner important urgent"
-    ng-repeat="task in tpVm.ikebox.tasks | orderBy:-important:true | orderBy:['important','urgent']:true">
+    ng-repeat="task in tpVm.ikebox.tasks | orderBy:-important:true | orderBy:['important','urgent']:true | orderBy:status.completed:true">
       <h3>{{task.title}}</h3>
       <p>{{task.description}}</p>
       <p>imp: {{task.important}}</p>
       <p>urg: {{task.urgent}}</p>
-      <div class="button" ng-click="tpVm.addToTasklist(task._id, tpVm.tasklist)">+</div>
+      <p>
+        {{task.status.timeAllocated - task.status.timeSpent | timeMinutes}} Minutes
+      </p>
+      <div class="button" ng-click="tpVm.addToTasklist(task._id, tpVm.tasklist)">Add to tasklist</div>
   </div>
   <div ng-hide="tpVm.ikebox">
     Select Ikebox
@@ -26,12 +27,13 @@
 <h2>tasklist planner</h2>
 <div class="tasklist-planner">
   <h2>{{tpVm.tasklist.title}}</h2>
-  <ul class="tasklist-planner list"
-      ng-repeat="task in tpVm.tasklist.tasks">
-    <li class="tasklist-planner list-item">
+  <a href="/#!/dashboard/taskrunner/{{tpVm.tasklist._id}}">
+    <div class="button">Start Your Day</div>
+  </a>
+  <ul class="tasklist-planner list">
+    <li class="tasklist-planner list-item" ng-repeat="task in tpVm.tasklist.tasks" ng-class="{'important': task.important, 'urgent': task.urgent, 'not-important': !task.important, 'not-urgent': !task.urgent}">
       <h3>{{task.title}}</h3>
-      <p>{{task.description}}</p>
-      <div class="button" ng-click="tpVm.removeFromTasklist(tpVm.tasklist, $index)">-</div>      
+      <p>{{task.description}}</p>      
     </li>
   </ul>
 </div>

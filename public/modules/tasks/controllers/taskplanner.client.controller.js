@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('tasks').controller('TaskPlannerController', ['$scope', 'Tasklist', 'Ikebox', '$stateParams',
-	function($scope, Tasklist, Ikebox, $stateParams) {
+angular.module('tasks').controller('TaskPlannerController', ['$scope', 'Task', 'Tasklist', 'Ikebox', '$stateParams',
+	function($scope, Task, Tasklist, Ikebox, $stateParams) {
     var tpVm = this,
     init,
     getTasklist,
@@ -34,12 +34,10 @@ angular.module('tasks').controller('TaskPlannerController', ['$scope', 'Tasklist
     }
 
     tpVm.addToTasklist = function addToTasklist (taskId, tasklist) {
-      console.log(checkDuplicate(tasklist, taskId));
       if (checkDuplicate(tasklist, taskId) === false) {
         Tasklist.addToTasklist(taskId, tasklist, function (response) {
           if (response.error) {
             alert('all the errors');
-            console.log(response.error);
           } else {
             getTasklist($stateParams.tasklistId);
           }
@@ -50,15 +48,26 @@ angular.module('tasks').controller('TaskPlannerController', ['$scope', 'Tasklist
       }
     };
 
-    tpVm.removeFromTasklist = function removeFromTasklist (tasklist, index) {
-      console.log(tasklist);
+    tpVm.removeFromTasklist = function removeFromTasklist (tasklist, index) {      
       tasklist.tasks.splice(index, 1);
       tasklist.$update(function (tasklist) {
         tpVm.tasklist = tasklist;
+        console.log(tasklist);
       }, function (error) {
         alert('Failed')
       })
-    }
+    };
+
+    tpVm.completeTask = function completeTask (task) {
+      Task.deleteTask(task._id, function (response) {
+        if (response.error) {
+          alert('All the errors');
+        } else {
+          ibVm.ikebox.tasks.splice(index, 1);
+          ikebox.$update();
+        }
+      })      
+    };
 
 	}
 ]);

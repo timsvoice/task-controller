@@ -28,14 +28,16 @@ var TaskSchema = new Schema({
     },
     completed: {
       type: Boolean,
-      defualt: false
+      default: false
     },
     timeAllocated: {
-      type: String
+      type: Number,
+      default: 0,
+      required: 'Task must have a time budget' 
     },
     timeSpent: {
-      type: String,
-      default: 0
+      type: Number,
+      default: 0,
     }   
   },
   important: {

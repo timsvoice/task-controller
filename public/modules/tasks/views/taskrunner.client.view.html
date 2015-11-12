@@ -1,0 +1,35 @@
+<h2>tasklist runner</h2>
+<div class="taskrunner tasklist">
+  <h2>{{trVm.tasklist.title}}</h2>
+  <ul class="tasklist-planner list"
+      ng-repeat="task in trVm.tasklist.tasks">
+    <li class="tasklist-planner list-item">
+      <h3>{{task.title}}</h3>
+      <p>{{task.description}}</p>
+      <p>
+        {{task.status.timeAllocated - task.status.timeSpent | timeMinutes}} Minutes
+      </p> 
+      
+      <p ng-show="task.important">Important</p>     
+      <p ng-hide="task.important">Not Important</p>
+      <p ng-show="task.urgent">Urgent</p>
+      <p ng-hide="task.urgent">Not Urgent</p>
+
+      <div class="button" ng-click="trVm.removeFromTasklist(trVm.tasklist, $index)">-</div>      
+      <div class="button" ng-hide="task.status.completed" ng-click="trVm.setTask(task)">Set</div>
+    </li>
+  </ul>
+</div>
+<div class="taskrunner-timer" ng-show="trVm.currentTask">
+  <h2>{{trVm.currentTask.title}}</h2>
+  <div class="taskrunner timer container">
+    {{trVm.timer | timeMinutes}}m 
+    <span ng-show="trVm.secondTracker < 10">0</span>{{trVm.timer | timeSeconds}}s
+  </div>
+  <p>{{trVm.currentTask.description}}</p>
+  <div class="button" ng-click="trVm.toggleTask(trVm.currentTask)">
+    <span class="start-timer" ng-if="trVm.timerRunning === false">Start</span>
+    <span class="stop-timer" ng-if="trVm.timerRunning === true">Stop</span>
+  </div>  
+  <div class="button" ng-click="trVm.completeTask(trVm.currentTask)">Complete</div>
+</div>

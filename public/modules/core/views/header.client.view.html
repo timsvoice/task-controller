@@ -1,4 +1,26 @@
-<div class="container" data-ng-controller="HeaderController">
+<div class="title-bar" data-ng-controller="HeaderController">
+	<span class="title left">
+		<a href="/#!/" class="navbar-brand">Ikebox</a>
+	</span>
+	<span class="right">
+		<div class="" ng-show="authentication.user">
+			  <a class="dashboard-menu-item" href="/#!/dashboard/ikeboxes">
+			    Ikeboxes
+			  </a>
+			  <a class="dashboard-menu-item" href="/#!/dashboard/tasklists">
+			    Tasklists
+			  </a> 
+			<a href="/#!/settings/profile">Profile</a>
+			<a href="/auth/signout">Signout</a>
+		</div>
+		<div ng-hide="authentication.user">
+			<a href="/#!/signup">Sign Up</a>
+			<a href="/#!/signin">Sign In</a>
+		</div>
+	</span>
+</div>
+
+<!-- <div class="container" data-ng-controller="HeaderController">
 	<div class="navbar-header">
 		<button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
 			<span class="sr-only">Toggle navigation</span>
@@ -55,4 +77,4 @@
 			</li>
 		</ul>
 	</nav>
-</div>
+</div> -->

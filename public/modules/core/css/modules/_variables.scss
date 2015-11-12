@@ -7,10 +7,15 @@ $color-accent: hsla(198, 17%, 20%, 1.0);
 $color-light: hsla(184, 67%, 95%, 1.0);
 $color-link: hsla(180, 5%, 48%, 1.0);
 $color-text: hsla(0, 0%, 100%, 1.0);
-$color-background: hsla(0, 0%, 32%, 0.5);
+$color-background: hsla(204, 15%, 98%, 1.0);
 $color-branding: hsla(197, 78%, 3%, 1.0);
-$color-border: hsla(0, 0%, 100%, 1.0);
+$color-border: hsla(0, 0%, 0%, 0.13);
+$color-border-dark: hsla(0, 0%, 0%, 0.50);
 
+$color-important-urgent: hsla(352, 77%, 56%, 1.0);
+$color-important-not-urgent: hsla(180, 50%, 47%, 1.0);
+$color-not-important-urgent: hsla(50, 97%, 56%, 1.0);
+$color-not-important-not-urgent: hsla(191, 69%, 49%, 1.0);
 /* ============================ 
 	Typography
 ============================ */

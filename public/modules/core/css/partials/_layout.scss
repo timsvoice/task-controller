@@ -1,90 +1,180 @@
-// home view
 
-.org {
-  &-container {
-    @include grid-frame();
+////
+// List Views
+////
+
+.tasklist-list-container, .ikebox-list-container {  
+}
+
+.tasklist-list, .ikebox-list {
+
+}
+
+.tasklist-list-card, .ikebox-list-card {   
+  @include grid-content();  
+}
+
+.tasklist-card, .ikebox-card {
+  @include card-container();
+}
+
+.tasklist-card {
+  min-height: 12rem;
+}
+
+.ikebox-card {
+  min-height: 10rem;
+}
+
+////
+//  Dashboard
+////
+
+.dashboard-container {
+  @include grid-container();
+  max-width: 100%;
+}
+
+.dashboard-header {
+  margin: 2rem 0rem 4rem 0rem;
+}
+
+////
+// Ikebox
+////
+
+.ikebox {
+  @include grid-content(
+    $size: 6
+  );  
+  padding: 0;
+  > ul {
+    padding: 0.5rem;
   }
-  &-profile {
-    @include grid-content();
-    background-color: $color-text;
-    padding: 0;
-    &-header {
-      height: 25rem;
-      background-color: $color-branding;
-      position: relative;     
-    }
-    &-thumb {
-      background-color: $color-base;
-      @include grid-content(
-        $size: 3
-      );
-      position: absolute;
-      bottom: -7.5rem;
-      height: 15rem;
-      width: 15rem;
-      margin-left: 4.33333%
-    }
-    &-description {
-      @include grid-content(
-        $size: 4,
-        $offset: 8        
-      );
-      position: absolute;  
-      bottom: 0;
-      background: $color-background;  
-      width: 100%;  
-      height: 50%;
-    }
-    &-menu {
-      @include grid-content(
-        $size: 6,
-        $offset: 6
-      );
-    }
+}
+
+.ikebox-container {
+  @include grid-block(
+    $wrap: true
+  );
+}
+
+
+li.important.urgent {
+  border-left: 0.75rem solid transparentize($color-important-urgent, 0.30);
+}
+
+li.important.not-urgent {
+  border-left: 0.75rem solid transparentize($color-important-not-urgent, 0.30);
+}
+
+li.not-important.urgent {
+  border-left: 0.75rem solid transparentize($color-not-important-urgent, 0.30);
+}
+
+li.not-important.not-urgent {
+  border-left: 0.75rem solid transparentize($color-not-important-not-urgent, 0.30);
+}
+
+
+.important.urgent {
+  h2 {
+    color: darken($color-important-urgent, 0.50);
   }
-  &-products {
-    padding: 2rem 0rem;
-    background-color: $color-accent;
-    &-table {
-      margin: 0rem 2rem;
-      background-color: $color-base;
-    }    
+  .ikebox-task-list {
   }
-  &-order {
-    @include grid-block(
-      $orientation: vertical,
-      $size: 4
+  .ikebox-title {
+  }
+  .ikebox-indicator {
+  }
+}
+
+.important.not-urgent {
+  h2 {
+    color: darken($color-important-not-urgent, 0.50);
+  }
+  .ikebox-task-list {
+  }
+  .ikebox-title {
+  }
+  .ikebox-indicator {
+  }
+}
+
+.not-important.urgent {
+  h2 {
+    color: darken($color-not-important-urgent, 0.50);
+  }
+  .ikebox-task-list {
+  }
+  .ikebox-title {
+  }
+  .ikebox-indicator {
+  }
+}
+
+.not-important.not-urgent {
+  h2 {
+    color: darken($color-not-important-not-urgent, 0.50);
+  }
+  .ikebox-task-list {
+  }
+  .ikebox-title {
+  }
+  .ikebox-indicator {
+  }
+}
+
+.ikebox-list-item {
+  @include grid-block();
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  margin: 0rem 0rem 0rem 0rem;
+  border-bottom: 1px solid $color-border;
+  background-color: $color-background;
+  @extend .clearfix;
+  a, h3 {
+    display: inline-block;
+  }
+  &-functions {
+    @include grid-content(
+      $size: 3
     );
-    background-color: white;   
-    &-description {
-      // @include grid-content(
-      //   $size: shrink
-      // );
-      height: 10vh;
-      background-color: $color-accent;
-    }
-    &-items {
-      // @include grid-content(
-      //   $size: shrink
-      // );
-      height: 65vh;
-      background-color: white;
-    }
-    &-item {
-      background-color: $color-base;
-    }
-    &-checkout {
-      // @include grid-content(
-      //   $size: shrink
-      // );
-      height: 25vh;
-      background-color: $color-accent;
-      &-total {
-      
-      }
-      &-button {
-
-      }
-    }
+    padding-right: 0;
   }
+  &-details {
+    @include grid-content(
+      $size: 9
+    );
+    padding-left: 0;
+    border-right: 1px solid $color-border;
+  }
+
+}
+
+.ikebox-task-list-container {
+  @include grid-block(
+    $wrap: true
+  );
+}
+
+.ikebox-task-list {
+  list-style: none;
+  margin-left: 0rem;
+  height: 20rem;
+  width: 100%;
+}
+
+.ikebox-header {
+  @include grid-block();
+  height: 3.5rem;
+}
+
+.ikebox-title {
+  @include grid-content();
+}
+
+.ikebox-indicator {
+  @include grid-content(
+    $size: 1
+  );
 }
