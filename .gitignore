@@ -8,7 +8,8 @@ app/tests/coverage/
 .bower-*/
 .idea/
 
-public/modules/core/css/app.css.map
+.sass-cache/
+*.css.map
 
 # Logs
 logs
