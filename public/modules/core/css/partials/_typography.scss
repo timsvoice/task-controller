@@ -65,18 +65,24 @@ i {
     text-align: center;  
     i {
       color: $color-base;
-      font-size: 4rem;
+      font-size: 2rem;
     }
 
   }
 }
 
 .tasklist-list-item {
+  &-time {
+    text-align: center;
+    vertical-align: middle;
+  }
   &.new {
     text-align: center;  
     i {
       color: $color-base;
-      font-size: 4rem;
+      font-size: 2rem;
+      font-weight: $text-light;
+      margin-top: 0.4rem;
     }
     p {
       color: $color-base;
@@ -90,7 +96,23 @@ i {
     }
   }
   p {
+    color: $color-base;
     margin: 0rem;
+  }
+  h3 {
+    color: $color-base;
+    font-weight: $text-heavy;
+    &.minutes {
+      font-size: 3rem;
+      line-height: 3rem;
+      padding: 0;
+      margin: 0;
+    }
+  }
+  h5 {
+    color: $color-base;
+    font-size: 1rem;
+    text-align: center;    
   }
 }
 

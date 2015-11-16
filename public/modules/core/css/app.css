@@ -7463,13 +7463,19 @@ i {
   text-align: center; }
   .tasklist-card.new i {
     color: #85c4d5;
-    font-size: 4rem; }
+    font-size: 2rem; }
+
+.tasklist-list-item-time {
+  text-align: center;
+  vertical-align: middle; }
 
 .tasklist-list-item.new {
   text-align: center; }
   .tasklist-list-item.new i {
     color: #85c4d5;
-    font-size: 4rem; }
+    font-size: 2rem;
+    font-weight: 200;
+    margin-top: 0.4rem; }
   .tasklist-list-item.new p {
     color: #85c4d5;
     font-weight: 400;
@@ -7480,7 +7486,22 @@ i {
     margin-right: auto; }
 
 .tasklist-list-item p {
+  color: #85c4d5;
   margin: 0rem; }
+
+.tasklist-list-item h3 {
+  color: #85c4d5;
+  font-weight: 900; }
+  .tasklist-list-item h3.minutes {
+    font-size: 3rem;
+    line-height: 3rem;
+    padding: 0;
+    margin: 0; }
+
+.tasklist-list-item h5 {
+  color: #85c4d5;
+  font-size: 1rem;
+  text-align: center; }
 
 input[type="search"] {
   border: none; }
@@ -7649,19 +7670,15 @@ fieldset {
   margin: 0rem 1rem 1.5rem 0rem;
   border-bottom: 1px solid 1px solid #cccccc; }
   .tasklist-list-item.new {
-    background-color: rgba(171, 214, 226, 0.4);
-    padding: 1.5rem;
+    height: 6.5rem;
+    border: 1px solid #85c4d5;
+    padding: 1rem;
     margin-top: 1.0675rem; }
   .tasklist-list-item-time {
-    display: block;
-    padding: 0 1rem;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    flex: 0 0 8.3333333333%;
-    max-width: 8.3333333333%;
+    min-width: 5rem;
     border-right: 1px solid #cccccc;
-    padding-right: 1rem; }
+    padding-right: 1rem;
+    padding-left: 0rem; }
   .tasklist-list-item-functions {
     display: block;
     padding: 0 1rem;
@@ -7692,7 +7709,8 @@ fieldset {
   border-bottom: 1px solid #cccccc; }
 
 .tasklist-card.new {
-  background-color: rgba(171, 214, 226, 0.4); }
+  height: 6.5rem;
+  border: 1px solid #85c4d5; }
 
 .tasklist-card-title {
   display: flex;

@@ -1,7 +1,3 @@
-    <a href="/#!/dashboard/taskrunner/{{tlVm.tasklist._id}}">
-      <div class="button">Start Your Day</div>
-    </a>
-
 <section class="tasklists-container">
   <section class="tasklists-list-container">
     <div class="tasklist-list">
@@ -47,12 +43,20 @@
         </li>
         <li class="tasklist-list-item" ng-repeat="task in tlVm.tasklist.tasks" ng-class="{'important': task.important, 'urgent': task.urgent, 'not-important': !task.important, 'not-urgent': !task.urgent}">
           <div class="tasklist-list-item-time">
-            <h3>{{task.status.timeAllocated - task.status.timeSpent | timeMinutes}}</h3>
+            <h3 class="minutes">{{task.status.timeAllocated - task.status.timeSpent | timeMinutes}}</h3>
             <h5>Minutes</h5>
           </div>
           <div class="tasklist-list-item-details">
             <h3>{{task.title}}</h3>
             <p>{{task.description}}</p>      
+          </div>
+          <div class="tasklist-list-item-actions">
+            <a zf-open="edit-task-modal">
+              <i class="fa fa-pencil"></i>
+            </a>
+            <a ng-click="tlVm.deleteTask(task, $index)">
+              <i class="fa fa-times"></i>
+            </a>
           </div>
         </li>
       </ul>

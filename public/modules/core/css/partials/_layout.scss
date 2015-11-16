@@ -43,9 +43,9 @@
 
 .tasklist-list-item {
   &.new {
-    // height: 8rem; 
-    background-color: $color-light; 
-    padding: 1.5rem;    
+    height: 6.5rem;
+    border: $base-border; 
+    padding: 1rem;    
     margin-top: 1.0675rem;
   }
   @include grid-block(
@@ -56,11 +56,13 @@
   border-bottom: 1px solid $basic-border;
   @extend .clearfix;
   &-time { 
-    @include grid-content(
-      $size: 1
-    ); 
+    // @include grid-content(
+    //   $size: 1
+    // );
+    min-width: 5rem; 
     border-right: $basic-border; 
     padding-right: 1rem;
+    padding-left: 0rem;
   }
   &-functions {
     @include grid-content(
@@ -89,8 +91,8 @@
 
 .tasklist-card {
   &.new {
-    // height: 8rem; 
-    background-color: $color-light;     
+    height: 6.5rem;
+    border: $base-border;     
   }
   &-header {
 
