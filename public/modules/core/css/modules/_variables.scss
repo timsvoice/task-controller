@@ -2,20 +2,18 @@
 	Colors
 ============================ */
 
-$color-base: hsla(42, 99%, 59%, 1.0);
-$color-accent: hsla(198, 17%, 20%, 1.0);
-$color-light: hsla(184, 67%, 95%, 1.0);
-$color-link: hsla(180, 5%, 48%, 1.0);
-$color-text: hsla(0, 0%, 100%, 1.0);
-$color-background: hsla(204, 15%, 98%, 1.0);
-$color-branding: hsla(197, 78%, 3%, 1.0);
-$color-border: hsla(0, 0%, 0%, 0.13);
-$color-border-dark: hsla(0, 0%, 0%, 0.50);
+$color-base: hsla(193, 49%, 68%, 1.0);
+$color-medium: hsla(193, 49%, 78%, 0.7);
+$color-light: hsla(193, 49%, 78%, 0.4);
+$color-secondary: hsla(0, 0%, 80%, 1.0);
+$color-link: $color-base;
+$color-icon: transparentize($color-base, 0.5);
 
-$color-important-urgent: hsla(352, 77%, 56%, 1.0);
-$color-important-not-urgent: hsla(180, 50%, 47%, 1.0);
-$color-not-important-urgent: hsla(50, 97%, 56%, 1.0);
-$color-not-important-not-urgent: hsla(191, 69%, 49%, 1.0);
+$color-important-urgent: hsla(18, 100%, 64%, 1.0);
+$color-important-not-urgent: $color-base;
+$color-not-important-urgent: hsla(42, 99%, 59%, 1.0);
+$color-not-important-not-urgent: hsla(89, 84%, 83%, 1.0);
+
 /* ============================ 
 	Typography
 ============================ */
@@ -29,9 +27,24 @@ $text-light:200;
 $underline: 0.0625rem;
 
 /* ============================ 
+  Buttons
+============================ */
+
+$button-color: transparentize($color-base, 0.9);
+$button-color-hover: transparentize($color-base, 0.5);
+$button-color-secondary: $color-secondary;
+$button-color-secondary-hover: darken($color-secondary, 0.1);
+$button-border-color: $color-secondary;
+
+/* ============================ 
 	Borders
 ============================ */
 
+$basic-border: 1px solid $color-secondary;
+$basic-border-thick: 3px solid $color-secondary;
+$button-border: 2px solid $button-border-color;
+$modal-border: 5px solid $color-base;
+$input-border: 1px solid $color-base;
 
 /* ============================ 
 	Backgrounds

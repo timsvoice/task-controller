@@ -13,6 +13,7 @@
     "angular-touch": "~1.4.7",
     "angular-ui-router": "~0.2.15",
     "angular-ui-utils": "~0.1.1",
+    "font-awesome": "fontawesome#~4.4.0",
     "foundation-apps": "~1.1.0"
   }
 }

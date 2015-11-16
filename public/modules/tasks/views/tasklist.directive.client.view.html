@@ -1,25 +1,64 @@
-<section class="tasklist-list-container">
-  <div class="tasklist-list grid-block large-up-3 medium-up-2 small-up-1">
-    <div class="tasklist-list-card">
-      <div class="tasklist-card">
-        <div  class="card-section" zf-open="create-tasklist-modal">
-          <h2>+</h2><p>add new tasklist</p>
+    <a href="/#!/dashboard/taskrunner/{{tlVm.tasklist._id}}">
+      <div class="button">Start Your Day</div>
+    </a>
+
+<section class="tasklists-container">
+  <section class="tasklists-list-container">
+    <div class="tasklist-list">
+      <div class="tasklist-list-card">
+        <div class="tasklist-card new">
+          <div  class="card-section" zf-open="create-tasklist-modal">
+            <i class="fa fa-plus"></i><p>add new tasklist</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="tasklist-list-card" ng-repeat="tasklist in tlVm.tasklists">
-      <div class="tasklist-card">
-        <div class="card-section">
-          <h3>
-            <a href="/#!/dashboard/taskplanner/{{tasklist._id}}">{{tasklist.title}}</a>
-          </h3>
-          <p>{{tasklist.description}}</p>
-          <p>{{tasklist.tasks.length}} Tasks</p>
-          <a ng-click="tlVm.deleteTasklist(tasklist, $index)">delete</a>
+      <div class="tasklist-list-card" ng-repeat="tasklist in tlVm.tasklists">
+        <div class="tasklist-card">
+          <div class="tasklist-card-section" ng-class="{disabled: tasklist._id != tlVm.tasklist._id}" ng-click="tlVm.setTasklist(tasklist)">
+            <div class="tasklist-card-header">
+              <div class="tasklist-card-title">
+                <h3>{{tasklist.title}}</h3>
+              </div>
+              <div class="tasklist-card-actions">
+                <a zf-open="edit-task-modal">
+                  <i class="fa fa-pencil"></i>
+                </a>
+                <a ng-click="tlVm.deleteTasklist(tasklist, $index)">
+                  <i class="fa fa-times"></i>
+                </a>
+              </div>
+            </div>
+            <p>{{tasklist.description}}</p>
+            <h5 ng-show="tasklist.tasks.length != 0">{{tasklist.tasks.length}} task<span ng-show="tasklist.tasks.length > 1">s</span></h5>
+            <h5 ng-show="tasklist.tasks.length === 0">No tasks added yet</h5>            
+          </div>
         </div>
       </div>
+    </div>  
+  </section>
+
+  <section class="tasklist-tasks-container">  
+    <div class="tasklist-list-container">
+      <ul class="task-list">
+        <li class="tasklist-list-item new" zf-open="create-task-modal">
+          <div>
+            <i class="fa fa-plus"></i><p>add new task</p>
+          </div>
+        </li>
+        <li class="tasklist-list-item" ng-repeat="task in tlVm.tasklist.tasks" ng-class="{'important': task.important, 'urgent': task.urgent, 'not-important': !task.important, 'not-urgent': !task.urgent}">
+          <div class="tasklist-list-item-time">
+            <h3>{{task.status.timeAllocated - task.status.timeSpent | timeMinutes}}</h3>
+            <h5>Minutes</h5>
+          </div>
+          <div class="tasklist-list-item-details">
+            <h3>{{task.title}}</h3>
+            <p>{{task.description}}</p>      
+          </div>
+        </li>
+      </ul>
     </div>
-  </div>  
+  </section>
+
 </section>
 
 <div zf-modal="" id="create-tasklist-modal">
@@ -31,5 +70,22 @@
     <label for="text">Description</label>
     <textarea ng-model="tlVm.tasklistObj.description"></textarea>
     <input type="submit" class="button" ng-click="tlVm.createTasklist(tlVm.tasklistObj, dbVm.user._id)">
+  </form>
+</div>
+
+<div zf-modal="" id="create-task-modal">
+  <a zf-close="" class="close-button">×</a>
+  <h3>New Task</h3>
+  <form>
+    <label for="text">Title</label>
+    <input type="text" ng-model="tlVm.taskObj.title">
+    <label for="text">Description</label>
+    <textarea ng-model="tlVm.taskObj.description"></textarea>
+    <input id="important-checkbox" type="checkbox" ng-model="tlVm.taskObj.important">
+      <label for="important-checkbox">Important</label>
+    <input id="urgent-checkbox" type="checkbox" ng-model="tlVm.taskObj.urgent">
+      <label for="urgent-checkbox">Urgent</label>      
+    <input type="number" ng-model="tlVm.taskObj.time">
+    <input type="submit" class="button" ng-click="tlVm.createTask(tlVm.tasklist, tlVm.taskObj, dbVm.user._id)"></input>
   </form>
 </div>

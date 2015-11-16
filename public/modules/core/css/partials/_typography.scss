@@ -1,3 +1,18 @@
+h3 {
+  font-size: 2rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+i {
+  color: $color-icon;
+  &:hover {
+    color: $color-base;
+  }
+}
+
 // placeholder text
 
 ::-webkit-input-placeholder {
@@ -16,24 +31,66 @@
    color: lighten($color-base, 15%);  
 }
 
-.ikebox-list-item {
-  h3, p {
-    margin: 0;
-    padding: 0;
-    line-height: 1.5rem;
-  }
+.disabled {
+  h1, h2, h3, h4, h5, p, a, i {
+    color: $color-secondary !important;
+  }  
 }
 
-.ikebox-title {
-  h2 {
-    margin: 0;
+.tasklist-card {
+  h3 {
+    line-height: 2rem;
+    color: $color-base;
     font-weight: $text-heavy;
   }
+  h5 {
+    color: $color-base;
+    font-weight: $text-heavy;
+    line-height: 1.5rem;
+    margin: 0.5rem 0rem 0.5rem 0.25rem;
+  }
+  p {
+    color: $color-base;
+    font-weight: $text-medium;
+    line-height: 1.5rem;
+    padding: 0rem;
+    // margin: 0rem 0rem 0rem 0.25rem;
+  }
+  i {
+    font-size: 1.5rem;
+    margin-right: 0.25rem;
+    margin-top: 0.4rem;
+  }
+  &.new {
+    text-align: center;  
+    i {
+      color: $color-base;
+      font-size: 4rem;
+    }
+
+  }
 }
 
-.ikebox-indicator {
-  color: $color-light;
-  font-size: 3rem;
-  margin-left: 0;
-  padding: 0;
+.tasklist-list-item {
+  &.new {
+    text-align: center;  
+    i {
+      color: $color-base;
+      font-size: 4rem;
+    }
+    p {
+      color: $color-base;
+      font-weight: $text-medium;
+      line-height: 1.5rem;
+      padding: 0rem;
+    }
+    > div {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  p {
+    margin: 0rem;
+  }
 }
+

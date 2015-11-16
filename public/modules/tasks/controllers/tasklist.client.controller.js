@@ -1,13 +1,15 @@
 'use strict';
 
-angular.module('tasks').controller('TaskListController', ['$scope', 'Tasklist', 'FoundationApi',
-	function($scope, Tasklist, FoundationApi) {
+angular.module('tasks').controller('TaskListController', ['$scope', '$stateParams', '$location', 'Task', 'Tasklist', 'FoundationApi',
+	function($scope, $stateParams, $location, Task, Tasklist, FoundationApi) {
     var tlVm = this,
-        init;
+        init,
+        findTasklist;
 
-    init = function init () {
+    init = function init () {            
       Tasklist.findAllTasklists(function (tasklists) {
         tlVm.tasklists = tasklists;
+        tlVm.tasklist = tlVm.tasklists[0];               
       }); 
     };
     init();
@@ -16,6 +18,23 @@ angular.module('tasks').controller('TaskListController', ['$scope', 'Tasklist', 
       title: '',
       description: ''      
     }
+
+    tlVm.taskObj = {
+      title: '',
+      description: '',
+      important: false,
+      urgent: false,
+      time: 0,
+      status: {
+        timeAllocated: 0
+      }
+    };
+
+    findTasklist = function findTasklist (tasklist) {
+      Tasklist.findTasklist( tasklist._id, function (tasklist) {
+        tlVm.tasklist = tasklist;
+      }); 
+    };    
 
     tlVm.createTasklist = function createTasklist (tasklist, userId) {
       Tasklist.createTasklist(tasklist, userId, function (response) {
@@ -40,7 +59,35 @@ angular.module('tasks').controller('TaskListController', ['$scope', 'Tasklist', 
           tlVm.tasklists.splice(index, 1);
         }
       });
-    };    
+    }; 
+
+    tlVm.setTasklist = function setTasklist (tasklist) {
+      findTasklist(tasklist);     
+    };
+
+    tlVm.createTask = function createTask (tasklist, taskObj, userId) {      
+      Task.createTask(taskObj, userId, function (taskResponse) {
+        if (taskResponse.error) {
+          console.log('cannot create task: ' + taskResponse.error);
+        } else {
+          tasklist.tasks.push(taskResponse.object._id);
+          tasklist.$update(function(tasklistRes){
+            findTasklist(tasklist);
+            tlVm.taskObj = {
+              title: '',
+              description: '',
+              important: false,
+              urgent: false,
+              time: 0,
+              status: {
+                timeAllocated: 0
+              }
+            };
+            FoundationApi.closeActiveElements('create-task-modal');          
+          })
+        }
+      })
+    }
 
 	}
 ]);
