@@ -7612,42 +7612,42 @@ fieldset {
   backface-visibility: hidden;
   flex: 0 0 66.6666666667%;
   max-width: 66.6666666667%;
-  flex-flow: column nowrap;
-  align-items: stretch;
+  flex-flow: row wrap;
   flex-wrap: nowrap;
   align-items: stretch;
   justify-content: flex-start;
   order: 0;
   height: auto;
-  overflow-x: auto;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   height: 100vh;
   border-top: 1px solid #cccccc; }
 
 .tasklist-list {
-  width: 100%;
   margin: 0; }
+  .tasklist-list-container {
+    display: flex;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    backface-visibility: hidden;
+    flex: 0 0 100%;
+    max-width: 100%;
+    flex-flow: row wrap;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    order: 0;
+    height: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar; }
   .tasklist-list:first-child {
     border-top: 1px solid #cccccc; }
 
 .task-list {
-  display: flex;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  backface-visibility: hidden;
-  flex: 1 1 auto;
-  flex-flow: column nowrap;
-  align-items: stretch;
-  flex-wrap: nowrap;
-  align-items: stretch;
-  justify-content: flex-start;
-  order: 0;
-  height: auto;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar; }
+  width: 100%; }
 
 .tasklist-list-item {
   display: flex;
@@ -7670,6 +7670,22 @@ fieldset {
   margin: 0rem 1rem 1.5rem 0rem;
   border-bottom: 1px solid 1px solid #cccccc; }
   .tasklist-list-item.new {
+    display: flex;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    backface-visibility: hidden;
+    flex: 0 0 100%;
+    max-width: 100%;
+    flex-flow: row wrap;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    order: 0;
+    height: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
     height: 6.5rem;
     border: 1px solid #85c4d5;
     padding: 1rem;
