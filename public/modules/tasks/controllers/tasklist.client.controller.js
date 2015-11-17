@@ -1,10 +1,11 @@
 'use strict';
 
-angular.module('tasks').controller('TaskListController', ['$scope', '$stateParams', '$location', 'Task', 'Tasklist', 'FoundationApi',
-	function($scope, $stateParams, $location, Task, Tasklist, FoundationApi) {
+angular.module('tasks').controller('TaskListController', ['$scope', '$stateParams', '$filter', '$location', 'Task', 'Tasklist', 'FoundationApi',
+	function($scope, $stateParams, $filter, $location, Task, Tasklist, FoundationApi) {
     var tlVm = this,
         init,
-        findTasklist;
+        findTasklist,
+        index;
 
     init = function init () {            
       Tasklist.findAllTasklists(function (tasklists) {
@@ -88,6 +89,38 @@ angular.module('tasks').controller('TaskListController', ['$scope', '$stateParam
         }
       })
     }
+
+    tlVm.editTask = function editTask (task) {
+      task.time =  $filter('timeMinutes')(task.status.timeAllocated);
+      tlVm.editingTask = task;
+    }
+
+    tlVm.updateTask = function updateTask (task) {
+      console.log(task);
+      Task.updateTask(task, function (response) {
+        if (response.error) {
+          alert('cannot update task: ' + response.error)
+        } else {
+          console.log(response.object);
+          FoundationApi.closeActiveElements('edit-task-modal'); 
+        }
+      })
+    };
+
+    // TODO two step delete process
+    tlVm.deleteTask = function deleteTask (tasklist, task) {
+      Task.deleteTask(task._id, function (response) {
+        if (response.error) {
+          alert('All the errors');
+        } else {
+          index = tlVm.tasklist.tasks.indexOf(task);
+          tlVm.tasklist.tasks.splice(index, 1);
+          tasklist.$update(function (tasklist) {
+            tlVm.tasklist = tasklist;
+          });
+        }
+      })
+    };    
 
 	}
 ]);

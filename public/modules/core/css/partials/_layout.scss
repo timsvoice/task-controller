@@ -60,9 +60,6 @@
   border-bottom: 1px solid $basic-border;
   @extend .clearfix;
   &-time { 
-    // @include grid-content(
-    //   $size: 1
-    // );
     min-width: 5rem; 
     border-right: $basic-border; 
     padding-right: 1rem;
@@ -76,7 +73,7 @@
   }
   &-details {
     @include grid-content(
-      $size: 9
+      $size: 10
     );
     padding-left: 1rem;
   }
@@ -103,7 +100,7 @@
   }
   &-title {
     @include grid-block(
-      $size: 9
+      $size: 10
     );
     padding: 0;
     display: inline-block;

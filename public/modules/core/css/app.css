@@ -7520,6 +7520,144 @@ fieldset {
 #common-name-input, #scientific-name-input {
   display: inline-block; }
 
+.create-task-ikebox {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  backface-visibility: hidden;
+  flex: 1 1 auto;
+  flex-flow: row wrap;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  order: 0;
+  height: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  margin: 1rem 0rem; }
+
+.create-task-important-urgent {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  backface-visibility: hidden;
+  flex: 0 0 50%;
+  max-width: 50%;
+  flex-flow: row wrap;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  order: 0;
+  height: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  text-align: center;
+  height: 5rem;
+  background-color: rgba(255, 126, 71, 0.25); }
+  .create-task-important-urgent h4 {
+    color: #ff7b43;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 900;
+    width: 100%;
+    padding: 1.5rem; }
+  .create-task-important-urgent.disabled {
+    background-color: rgba(204, 204, 204, 0.3); }
+
+.create-task-important-not-urgent {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  backface-visibility: hidden;
+  flex: 0 0 50%;
+  max-width: 50%;
+  flex-flow: row wrap;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  order: 0;
+  height: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  text-align: center;
+  height: 5rem;
+  background-color: rgba(133, 196, 213, 0.25); }
+  .create-task-important-not-urgent h4 {
+    color: #82c2d4;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 900;
+    width: 100%;
+    padding: 1.5rem; }
+  .create-task-important-not-urgent.disabled {
+    background-color: rgba(204, 204, 204, 0.3); }
+
+.create-task-not-important-urgent {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  backface-visibility: hidden;
+  flex: 0 0 50%;
+  max-width: 50%;
+  flex-flow: row wrap;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  order: 0;
+  height: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  text-align: center;
+  height: 5rem;
+  background-color: rgba(254, 192, 47, 0.25); }
+  .create-task-not-important-urgent h4 {
+    color: #febe2a;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 900;
+    width: 100%;
+    padding: 1.5rem; }
+  .create-task-not-important-urgent.disabled {
+    background-color: rgba(204, 204, 204, 0.3); }
+
+.create-task-not-important-not-urgent {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  backface-visibility: hidden;
+  flex: 0 0 50%;
+  max-width: 50%;
+  flex-flow: row wrap;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  order: 0;
+  height: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  text-align: center;
+  height: 5rem;
+  background-color: rgba(213, 248, 175, 0.25); }
+  .create-task-not-important-not-urgent h4 {
+    color: #d3f8ab;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 900;
+    width: 100%;
+    padding: 1.5rem; }
+  .create-task-not-important-not-urgent.disabled {
+    background-color: rgba(204, 204, 204, 0.3); }
+
 .header-menu {
   background-color: transparent;
   color: #85c4d5; }
@@ -7710,8 +7848,8 @@ fieldset {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
-    flex: 0 0 75%;
-    max-width: 75%;
+    flex: 0 0 83.3333333333%;
+    max-width: 83.3333333333%;
     padding-left: 1rem; }
 
 .tasklist-list-card, .ikebox-list-card {
@@ -7734,8 +7872,8 @@ fieldset {
   position: relative;
   overflow: hidden;
   backface-visibility: hidden;
-  flex: 0 0 75%;
-  max-width: 75%;
+  flex: 0 0 83.3333333333%;
+  max-width: 83.3333333333%;
   flex-flow: row wrap;
   flex-wrap: nowrap;
   align-items: stretch;
