@@ -7557,16 +7557,18 @@ fieldset {
   -ms-overflow-style: -ms-autohiding-scrollbar;
   text-align: center;
   height: 5rem;
-  background-color: rgba(255, 126, 71, 0.25); }
+  background-color: rgba(204, 204, 204, 0.3); }
   .create-task-important-urgent h4 {
-    color: #ff7b43;
+    color: #cacaca;
     text-align: center;
     font-size: 1rem;
     font-weight: 900;
     width: 100%;
     padding: 1.5rem; }
-  .create-task-important-urgent.disabled {
-    background-color: rgba(204, 204, 204, 0.3); }
+  .create-task-important-urgent.active {
+    background-color: rgba(255, 126, 71, 0.25); }
+    .create-task-important-urgent.active h4 {
+      color: #ff7b43; }
 
 .create-task-important-not-urgent {
   display: flex;
@@ -7587,16 +7589,18 @@ fieldset {
   -ms-overflow-style: -ms-autohiding-scrollbar;
   text-align: center;
   height: 5rem;
-  background-color: rgba(133, 196, 213, 0.25); }
+  background-color: rgba(204, 204, 204, 0.3); }
   .create-task-important-not-urgent h4 {
-    color: #82c2d4;
+    color: #cacaca;
     text-align: center;
     font-size: 1rem;
     font-weight: 900;
     width: 100%;
     padding: 1.5rem; }
-  .create-task-important-not-urgent.disabled {
-    background-color: rgba(204, 204, 204, 0.3); }
+  .create-task-important-not-urgent.active {
+    background-color: rgba(133, 196, 213, 0.25); }
+    .create-task-important-not-urgent.active h4 {
+      color: #82c2d4; }
 
 .create-task-not-important-urgent {
   display: flex;
@@ -7617,16 +7621,18 @@ fieldset {
   -ms-overflow-style: -ms-autohiding-scrollbar;
   text-align: center;
   height: 5rem;
-  background-color: rgba(254, 192, 47, 0.25); }
+  background-color: rgba(204, 204, 204, 0.3); }
   .create-task-not-important-urgent h4 {
-    color: #febe2a;
+    color: #cacaca;
     text-align: center;
     font-size: 1rem;
     font-weight: 900;
     width: 100%;
     padding: 1.5rem; }
-  .create-task-not-important-urgent.disabled {
-    background-color: rgba(204, 204, 204, 0.3); }
+  .create-task-not-important-urgent.active {
+    background-color: rgba(254, 192, 47, 0.25); }
+    .create-task-not-important-urgent.active h4 {
+      color: #febe2a; }
 
 .create-task-not-important-not-urgent {
   display: flex;
@@ -7647,16 +7653,18 @@ fieldset {
   -ms-overflow-style: -ms-autohiding-scrollbar;
   text-align: center;
   height: 5rem;
-  background-color: rgba(213, 248, 175, 0.25); }
+  background-color: rgba(204, 204, 204, 0.3); }
   .create-task-not-important-not-urgent h4 {
-    color: #d3f8ab;
+    color: #cacaca;
     text-align: center;
     font-size: 1rem;
     font-weight: 900;
     width: 100%;
     padding: 1.5rem; }
-  .create-task-not-important-not-urgent.disabled {
-    background-color: rgba(204, 204, 204, 0.3); }
+  .create-task-not-important-not-urgent.active {
+    background-color: rgba(213, 248, 175, 0.25); }
+    .create-task-not-important-not-urgent.active h4 {
+      color: #d3f8ab; }
 
 .header-menu {
   background-color: transparent;

@@ -83,12 +83,30 @@
   <form>
     <label for="text">Title</label>
     <input type="text" ng-model="tlVm.editingTask.title">
+    <div class="create-task-ikebox">
+      <div  class="create-task-important-urgent"
+            ng-click="tlVm.editingTask.important = true; tlVm.editingTask.urgent = true"
+            ng-class="{active: tlVm.editingTask.important && tlVm.editingTask.urgent}">
+        <h4>Important + Urgent</h4>
+      </div>
+      <div class="create-task-important-not-urgent"
+            ng-click="tlVm.editingTask.important = true; tlVm.editingTask.urgent = false"
+            ng-class="{active: tlVm.editingTask.important && !tlVm.editingTask.urgent}">
+        <h4>Important + Not Urgent</h4>
+      </div>
+      <div class="create-task-not-important-urgent"
+            ng-click="tlVm.editingTask.important = false; tlVm.editingTask.urgent = true"
+            ng-class="{active: !tlVm.editingTask.important && tlVm.editingTask.urgent}">
+        <h4>Not Important + Urgent</h4>
+      </div>
+      <div class="create-task-not-important-not-urgent"
+            ng-click="tlVm.editingTask.important = false; tlVm.editingTask.urgent = false"
+            ng-class="{active: !tlVm.editingTask.important && !tlVm.editingTask.urgent}">
+        <h4>Not Important + Not Urgent</h4>
+      </div>
+    </div>
     <label for="text">Description</label>
-    <textarea ng-model="tlVm.editingTask.description"></textarea>
-    <input id="important-checkbox" type="checkbox" ng-model="tlVm.editingTask.important">
-      <label for="important-checkbox">Important</label>
-    <input id="urgent-checkbox" type="checkbox" ng-model="tlVm.editingTask.urgent">
-      <label for="urgent-checkbox">Urgent</label>
+    <textarea ng-model="tlVm.editingTask.description"></textarea>    
     <input type="number" ng-model="tlVm.editingTask.time">      
     <input type="submit" class="button" ng-click="tlVm.updateTask(tlVm.editingTask)"></input>
   </form>
@@ -101,25 +119,29 @@
     <label for="text">Title</label>
     <input type="text" ng-model="tlVm.taskObj.title">
     <div class="create-task-ikebox">
-      <div class="create-task-important-urgent">
+      <div  class="create-task-important-urgent"
+            ng-click="tlVm.taskObj.important = true; tlVm.taskObj.urgent = true"
+            ng-class="{active: tlVm.taskObj.important && tlVm.taskObj.urgent}">
         <h4>Important + Urgent</h4>
       </div>
-      <div class="create-task-important-not-urgent">
+      <div class="create-task-important-not-urgent"
+            ng-click="tlVm.taskObj.important = true; tlVm.taskObj.urgent = false"
+            ng-class="{active: tlVm.taskObj.important && !tlVm.taskObj.urgent}">
         <h4>Important + Not Urgent</h4>
       </div>
-      <div class="create-task-not-important-urgent">
+      <div class="create-task-not-important-urgent"
+            ng-click="tlVm.taskObj.important = false; tlVm.taskObj.urgent = true"
+            ng-class="{active: !tlVm.taskObj.important && tlVm.taskObj.urgent}">
         <h4>Not Important + Urgent</h4>
       </div>
-      <div class="create-task-not-important-not-urgent">
+      <div class="create-task-not-important-not-urgent"
+            ng-click="tlVm.taskObj.important = false; tlVm.taskObj.urgent = false"
+            ng-class="{active: !tlVm.taskObj.important && !tlVm.taskObj.urgent}">
         <h4>Not Important + Not Urgent</h4>
       </div>
     </div>
     <label for="text">Description</label>
-    <textarea ng-model="tlVm.taskObj.description"></textarea>
-    <input id="important-checkbox" type="checkbox" ng-model="tlVm.taskObj.important">
-      <label for="important-checkbox">Important</label>
-    <input id="urgent-checkbox" type="checkbox" ng-model="tlVm.taskObj.urgent">
-      <label for="urgent-checkbox">Urgent</label>      
+    <textarea ng-model="tlVm.taskObj.description"></textarea>      
     <input type="number" ng-model="tlVm.taskObj.time">
     <input type="submit" class="button" ng-click="tlVm.createTask(tlVm.tasklist, tlVm.taskObj, dbVm.user._id)"></input>
   </form>

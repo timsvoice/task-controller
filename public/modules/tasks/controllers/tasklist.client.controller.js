@@ -23,8 +23,8 @@ angular.module('tasks').controller('TaskListController', ['$scope', '$stateParam
     tlVm.taskObj = {
       title: '',
       description: '',
-      important: false,
-      urgent: false,
+      important: true,
+      urgent: true,
       time: 0,
       status: {
         timeAllocated: 0

@@ -74,16 +74,19 @@
   );
   text-align: center;  
   h4 {
-    color: darken($color-classification, 0.9);
+    color: darken($color-secondary, 0.9);
     text-align: center;
     font-size: 1rem;
     font-weight: $text-heavy;
     width: 100%;
     padding: 1.5rem;
   }
-  height: 5rem;
-  background-color: transparentize($color-classification, 0.75);
-  &.disabled {
-    background-color: transparentize($color-secondary, 0.7);
+  height: 5rem;  
+  background-color: transparentize($color-secondary, 0.7);
+  &.active {
+    background-color: transparentize($color-classification, 0.75);
+    h4 {
+      color: darken($color-classification, 0.9);      
+    }
   }  
 }
